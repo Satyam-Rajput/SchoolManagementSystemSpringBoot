@@ -1,0 +1,24 @@
+#footer
+{
+background-color: darkgrey;
+    text-align: center;
+    
+    width:100%px;
+    height: 50px;
+    
+}
+#footer h1
+{
+color: red;
+    font-family: fantasy;
+    font-weight: bold;   
+}
+#navbar
+{
+float: left;
+width:200px;
+    height: 100%;
+    background-color: darkgray;
+    
+    
+}
