@@ -17,8 +17,8 @@
 </head>
 <body >
 
-<nav class="navbar navbar-expand-lg navbar-light sb-nav-fixed sb-sidenav-dark">
- <a class="navbar-brand text-light" style="font-size:20px " href="#">Alpha School Management System</a>
+<nav class="navbar navbar-expand-lg navbar-light sb-nav-fixed bg-success">
+ <a class="navbar-brand text-light" style="font-size:20px " href="#">Alpha School</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -42,7 +42,7 @@
     <form class="form-inline my-2 my-lg-0">
     <div>
     
-    <a href=" ../user/loginForm"  class="btn btn-outline-success my-2 my-sm-0  text-light"> Login </a>
+    <a href=" ../user/loginForm"  class="btn btn-outline-secondary my-2 my-sm-0  text-light"> Login </a>
 
     </div>
       </form>

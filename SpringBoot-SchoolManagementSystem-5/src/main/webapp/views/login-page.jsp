@@ -36,9 +36,9 @@ function validate()
 
 </script>
 </head>
-<body background="<c:url value="/resources/static/images/college5.jpg"/>"/>
-<nav class="navbar navbar-expand-lg navbar-light sb-nav-fixed sb-sidenav-dark">
- <a class="navbar-brand text-light" style="font-size:20px " href="#">Alpha School Management System</a>
+<body style="background-repeat: no-repeat;" background="<c:url value="/resources/static/images/college5.jpg"/>"/>
+<nav class="navbar navbar-expand-lg navbar-light sb-nav-fixed bg-success">
+ <a class="navbar-brand text-light" style="font-size:20px " href="#">Alpha School</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -61,52 +61,104 @@ function validate()
     </ul>
     <form class="form-inline my-2 my-lg-0">
     <div>
-    <a  href=" ../user/loginForm"  class="btn btn-outline-success my-2 my-sm-0  text-light"> Login </a>
+    
+    <a href=" ../user/loginForm"  class="btn btn-outline-success my-2 my-sm-0  text-light"> Login </a>
 
     </div>
       </form>
   </div>
 </nav>
-<div align="center" style="border: 1px;margin-top:200px;margin-left:550px; border-radius: 20px;height: 300px; width: 400px"  class="sb-sidenav-dark text-white">
+<!--  
+<div align="center" style="border: 1px;margin-top:200px;margin-left:550px; border-radius: 20px;height: 300px; width: 400px"  class="bg-secondary text-white">
 	<div class="container">
 		<div class="col-md-offset-2 col-md-7">
 			<h2 style="padding-top: 30px"   class="text-center text-light">Login</h2>
 			<div class="panel panel-info">
+			<br/>
 				
 				<div class="panel-body">
 					<form:form action="../user/login" cssClass="form-horizontal"
 						method="post" modelAttribute="user">
 
 						
-						<div align="center" class="form-group">
-							<label for="email" class="col-md-10 control-label">
-							<div align="left" style="padding-right: 20px" class="text-light">Email</div></label>
-							<div class="col-md-12">
-								<input type="email" class="form-control" id="email" name="email" required="required"/>
-							</div><div style="color: red;font-size: 15px; ">${error}</div>
-						</div>
+						<div class="row text-right">
 						
-						<div align="center" class="form-group">
-							<label   for="password" class="col-md-10 control-label">
-							<div align="left" style="padding-right: 20px"  class="text-light">Password</div></label>
-							<div class="col-md-12">
-							<input type="password" id="password" class="form-control"  name="password" required="required"/>
-							</div>
-						</div>
-						<div class="form-group">
-							<!-- Button -->
-							<div class="col-md-offset-3 col-md-9">
-								
-								<input onclick="return validate()" type="submit" value="Login" class="btn btn-outline-success my-2 my-sm-0  text-light">
-							</div>
-						</div>
+						<div class="col-sm-3 text-center">
+						<p class="contact"><label for="email">Email</label></p>
+</div>
+<div class="col-sm-2"></div>
+&nbsp;<div class="col-sm-6 text-left"><input id="email" name="email" placeholder="Enter Email" required tabindex="1" type="email"></div></div>
+<div class="row">
+<div class="col-sm-12 text-center"><div style="color: red;font-size: 15px; ">${error}</div></div></div>
 
+						
+						<div class="row"><div class="col-sm-4 " align="left">
+						<p class="contact"><label for="password">Password</label></p>
+</div><div class="col-sm-1"></div><div class="col-sm-6 "><input id="password" name="password" placeholder="Enter password" required tabindex="2" type="password"></div></div>
+						
+						<div class="row"><div class="col-sm-12 float-center"><input onclick="return validate()" type="submit" value="Login" class="btn btn-outline-success my-2 my-sm-0  text-light">
+						</div></div>
+						
+						
+						
+						
 					</form:form>
 				</div>	
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
+	
+	<div class="card bg-success" style="width: 30%;margin-left: 35% ; margin-top: 16%;border-radius: 10px">
+  <div class="card-header text-center text-light">
+    LOGIN
+  </div>
+  <div class="card-body bg-light" style="border-radius: 15px">
+<form:form action="../user/login" 
+						method="post" modelAttribute="user">
+
+						
+						<div class="row ">
+						
+					&nbsp;&nbsp;	<div class="col-sm-5 text-center">
+						<p class="text-dark"><label for="email">Email</label></p>
+</div>
+
+<div class="col-sm-6 text-left">
+<!--  <input id="email" name="email" placeholder="Enter Email" required tabindex="1" type="email">-->
+
+<div class="input-group mb-6 ">
+  <input type="email" required="required" class="form-control" id="email" name="email" placeholder="Enter email" tabindex="1" aria-label="email" aria-describedby="basic-addon2">
+  
+</div>
+</div></div>
+<div class="row">
+<div class="col-sm-12 text-center"><div style="color: red;font-size: 15px; ">${error}</div></div></div>
+
+						<div class="row"><div class="col-sm-1  text-center" ></div>
+					<div class="col-sm-4  text-center" >
+						<p class="text-dark"><label for="password">Password</label></p>
+</div>
+
+&nbsp;&nbsp;<div class="col-sm-6 ">
+<!--  <input id="password" name="password" placeholder="Enter password" required tabindex="2" type="password">-->
+
+<div class="input-group mb-3">
+  <input type="password" class="form-control" required="required"  id="password" name="password" tabindex="2" placeholder="Enter password" aria-label="password" aria-describedby="basic-addon2">
+  
+</div>
+
+</div></div>
+						
+						<div class="row"><div class="col-sm-12 text-center text-dark"><input onclick="return validate()" type="submit" tabindex="3" value="Login" class="btn btn-outline-success my-2 my-sm-0  text-dark">
+						</div></div>
+						
+						
+						
+						
+					</form:form>
+  </div>
+</div>
 	
 </body>
 </html>

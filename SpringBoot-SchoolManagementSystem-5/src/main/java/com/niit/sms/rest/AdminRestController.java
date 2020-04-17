@@ -237,6 +237,7 @@ public class AdminRestController {
 		s.setId(theStudent.getId());
 		s.setLastName(theStudent.getLastName());
 		s.setPassword(theStudent.getPassword());
+		
 		s.setPhoneNumber(theStudent.getPhoneNumber());
 		s.setStudentClass(theStudent.getStudentClass());
 		a.setAddressId(theStudent.getAddressId());
@@ -298,7 +299,7 @@ public List<StudentDetails> getStudents()
 }
 
 
-@GetMapping("/products/{studentClass}")
+@GetMapping("/filterStudents/{studentClass}")
 public List<StudentDetails> filterStudents(@PathVariable(value = "studentClass") String studentClass)
 {
 	if(studentClass.equalsIgnoreCase("all"))
@@ -332,18 +333,37 @@ public EmployeeDetails getTeacher(@PathVariable(value = "teacherId") Long theId)
 	return null;
 }
 
-
-
-@PutMapping("/updateTeacher")
-public boolean updateTeacher(@Valid @RequestBody EmployeeDetails theEmployee)
+@GetMapping("/getEmployeesCount")
+public long getEmployeeCount()
 {
-	return service.update(convertEmployeeToUpdate(theEmployee));
+	return service.countEmployee();
+	}
+
+@GetMapping("/getStudentsCount")
+public long getStudentCount()
+{
+	return service.countStudent();
+	}
+@PutMapping("/updateTeacher/{teacherId}")
+public boolean updateTeacher(@PathVariable(value = "teacherId") Long theId,@Valid @RequestBody EmployeeDetails theEmployee)
+{
+	Employee e=service.getEmployee(theId);
+	Employee e1=convertEmployeeToUpdate(theEmployee);
+	e1.setId(theId);
+	e1.getAddress().setAddressId(e.getAddress().getAddressId());
+	e1.setDateofJoining(e.getDateofJoining());
+	return service.update(e1);
 }
 
-@PutMapping("/updateStudent")
-public boolean updateStudent(@Valid @RequestBody StudentDetails theStudent)
+@PutMapping("/updateStudent/{studentId}")
+public boolean updateStudent(@PathVariable(value = "studentId") Long theId,@Valid @RequestBody StudentDetails theStudent)
 {
-	return service.update(convertStudentToUpdate(theStudent));
+	Student s=service.getStudent(theId);
+	Student update=convertStudentToUpdate(theStudent);
+	update.getAddress().setAddressId(s.getAddress().getAddressId());
+	update.setId(theId);
+	update.setDateofJoining(s.getDateofJoining());
+	return service.update(update);
 }
 
 @DeleteMapping("/deleteTeacher/{teacherId}")

@@ -15,8 +15,8 @@
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
-    <body class="sb-nav-fixed bg-dark">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark sb-sidenav-dark">
+    <body class="sb-nav-fixed bg-white">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
             <a class="navbar-brand" href="../admin/adminPage">Admin Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -43,44 +43,44 @@
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion bg-success" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="../admin/adminPage"
+                            <div class="sb-sidenav-menu-heading text-light">Core</div>
+                            <a class="nav-link text-light" href="../admin/adminPage"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard</a
                             >
-                           <div class="sb-sidenav-menu-heading">Teacher</div>
+                           <div class="sb-sidenav-menu-heading text-light">Teacher</div>
                             
-                              <a class="nav-link" href="../admin/newTeacher"
+                              <a class="nav-link text-light" href="../admin/newTeacher"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
                                 Add Teachers</a
-                            ><a class="nav-link" href="../admin/getEmployees"
+                            ><a class="nav-link text-light" href="../admin/getEmployees"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Teacher Details</a>
-                                <a class="nav-link" href="../admin/findTeacher"
+                                <a class="nav-link text-light" href="../admin/findTeacher"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 Find Teacher Details</a>
                            
-                            <div class="sb-sidenav-menu-heading">Student</div>
+                            <div class="sb-sidenav-menu-heading text-light">Student</div>
                             
-                              <a class="nav-link" href="../admin/newStudent"
+                              <a class="nav-link text-light" href="../admin/newStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
                                 Add Students</a
-                            ><a class="nav-link" href="../admin/getStudents"
+                            ><a class="nav-link text-light" href="../admin/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Student Details</a>
-                                <a class="nav-link" href="../admin/findStudent"
+                                <a class="nav-link text-light" href="../admin/findStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 Find Student Details</a>
                             
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer sb-sidenav-dark">
-                        <div class="small">Logged in as:</div>
-                    <%out.println(request.getSession(false).getAttribute("user")); %>
-                    </div>
+            <!--         <div class=" py-2 sb-sidenav-footer bg-dark">
+                        <div class="small text-light">Logged in as:</div>
+                  <p class="text-light">  
+                   </p> </div>--> 
                 </nav>
             </div>
             <div id="layoutSidenav_content">
@@ -88,7 +88,7 @@
                   <div class="container-fluid">
             <div class="row">
               <div class="col-md-6 my-3">
-                <div class=" sb-sidenav-dark px-3 py-3">
+                <div class=" bg-light px-3 py-3">
                   <h4 class="mb-2">Total Number of Teachers    :<%out.println(request.getSession(false).getAttribute("teacherCount")); %></h4>
                  
               </div></div>

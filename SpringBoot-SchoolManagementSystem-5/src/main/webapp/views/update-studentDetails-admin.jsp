@@ -15,8 +15,8 @@
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
-      <body class="sb-nav-fixed bg-dark">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark sb-sidenav-dark">
+       <body class="sb-nav-fixed bg-white">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
             <a class="navbar-brand" href="../admin/adminPage">Admin Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -43,51 +43,50 @@
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion bg-success" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="../admin/adminPage"
+                            <div class="sb-sidenav-menu-heading text-light">Core</div>
+                            <a class="nav-link text-light" href="../admin/adminPage"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard</a
                             >
-                           <div class="sb-sidenav-menu-heading">Teacher</div>
+                           <div class="sb-sidenav-menu-heading text-light">Teacher</div>
                             
-                              <a class="nav-link" href="../admin/newTeacher"
+                              <a class="nav-link text-light" href="../admin/newTeacher"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
                                 Add Teachers</a
-                            ><a class="nav-link" href="../admin/getEmployees"
+                            ><a class="nav-link text-light" href="../admin/getEmployees"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Teacher Details</a>
-                                <a class="nav-link" href="../admin/findTeacher"
+                                <a class="nav-link text-light" href="../admin/findTeacher"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 Find Teacher Details</a>
                            
-                            <div class="sb-sidenav-menu-heading">Student</div>
+                            <div class="sb-sidenav-menu-heading text-light">Student</div>
                             
-                              <a class="nav-link" href="../admin/newStudent"
+                              <a class="nav-link text-light" href="../admin/newStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
                                 Add Students</a
-                            ><a class="nav-link" href="../admin/getStudents"
+                            ><a class="nav-link text-light" href="../admin/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Student Details</a>
-                                <a class="nav-link" href="../admin/findStudent"
+                                <a class="nav-link text-light" href="../admin/findStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 Find Student Details</a>
                             
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer sb-sidenav-dark">
-                        <div class="small">Logged in as:</div>
-                    <%out.println(request.getSession(false).getAttribute("user")); %>
-                    </div>
+            <!--         <div class=" py-2 sb-sidenav-footer bg-dark">
+                        <div class="small text-light">Logged in as:</div>
+                  <p class="text-light">  
+                   </p> </div>--> 
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
              
-             
-             
+             <!--              
              
              
              <div  align="center" style="border: 1px;margin-top:20px;margin-left:500px; border-radius: 30px;height: 700px; width: 450px"  class="sb-sidenav-dark text-white">
@@ -201,7 +200,445 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
+	
+	
+	
+	
+	
+	
+	
+	
+		<div class="card bg-success"
+					style="width: 75%; margin-left: 13%; margin-top: 3%; border-radius: 10px">
+					<div class="card-header text-center text-light">Student
+						Registration</div>
+					<div class="card-body bg-light" style="border-radius: 10px;">
+						<form:form id="addStudentForm" action="../admin/updateStudentDetails" cssClass="form-horizontal"
+						method="post" modelAttribute="student">
+							<div class="row">
+								<div class="col-sm-12" align="left">
+									<input type="hidden" value="${student.id }" name="id" id="id"  />
+								</div>
+							</div>
+
+							<div class="row ">
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="firstName">First Name :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input type="text" class="form-control" id="firstName"
+											name="firstName" placeholder="Enter First Name" tabindex="1"
+											aria-label="firstName" aria-describedby="basic-addon2"
+									 value="${student.firstName }"		required="required" >
+
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="firstName">Last Name :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input type="text" class="form-control" id="lastName"
+											name="lastName" placeholder="Enter last name" tabindex="2"
+											aria-label="lastName" aria-describedby="basic-addon2"
+						value="${student.lastName }"					required="required">
+
+									</div>
+								</div>
+
+							</div>
+
+
+
+
+
+
+
+
+
+							<div class="row ">
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="fatherName">Father Name :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input type="text" class="form-control" id="fatherName"
+											name="fatherName" placeholder="Enter Father Name " required tabindex="3"
+					value="${student.fatherName }"						aria-label="firstName" aria-describedby="basic-addon2">
+
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+
+							<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="studentClass"> Class :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										   <select class="form-control" required="required" name="studentClass" tabindex="4">
+
+            
+            <option value="Intermediate" selected="selected">Intermediate</option>
+            <option value="HighSchool">High School</option>
+            <option value="9">9<sup>th</sup></option>
+             <option value="8">8<sup>th</sup></option>
+            </select>
+									</div>
+								</div>
+								
+
+							</div>
+
+
+							<div class="row ">
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="email">Email :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input class="form-control" id="email" name="email"
+											placeholder="Enter Email " tabindex="5" type="email"
+											aria-label="email" aria-describedby="basic-addon2"
+									value="${student.email }"		required="required">
+
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="password">Password :</label>
+									</p>
+								</div>
+                                     
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input class="form-control" type="password" id="password" tabindex="6"
+											name="password" placeholder="Enter password "
+											aria-label="password" aria-describedby="basic-addon2"
+											required="required">
+
+									</div>
+								</div>
+								
+
+							</div>
+<div class="row">
+								<div class="col-sm-8 text-center"></div>
+								<div class="col-sm-3 text-center">
+									<div style="color: red; font-size: 15px;">${error}</div>
+								</div>
+							</div>
+							<div class="row ">
+							
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="DateOfBirth">Date Of Birth :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input type="date" class="form-control"  id="dateOfBirth" 
+    value="${student.dateOfBirth }"   min="1994-01-01" max="2016-12-31" name="dateOfBirth" tabindex="7">
+
+									</div>
+								</div>
+							
+							
+
+								<div class="col-sm-1"></div>
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="confirmPassword">Confirm Password :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input class="form-control" type="password" tabindex="8"
+											id="confirmPassword" name="confirmPassword"
+											placeholder="Enter password  " aria-label="confirmPassword"
+											aria-describedby="basic-addon2" required="required" onblur="check()">
+
+									</div>
+								</div>
+								
+
+							</div><div class="row">
+								<div class="col-sm-8 text-center"></div>
+								<div class="col-sm-3 text-center">
+									<div style="color: red; font-size: 15px;"><p id="confirm"></p></div>
+								</div>
+							</div>
+
+
+
+
+<div class="row ">
+
+								
+								
+								
+									<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="phoneNumber">Phone Number :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input id="phone" name="phoneNumber"
+											placeholder="phone number" required tabindex="9" type="tel"
+											pattern="[0-9]{10}" class="form-control"
+							value="${student.phoneNumber }"				aria-label="lastName" aria-describedby="basic-addon2">
+
+									</div>
+								</div>
+								
+								
+								<div class="col-sm-1"></div>
+								
+									<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="AlternateNumber">Alternate Number :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input id="phone" name="alternateNumber"
+											placeholder="alternate number" required tabindex="10" type="tel"
+											pattern="[0-9]{10}" class="form-control"
+											aria-label="lastName" aria-describedby="basic-addon2">
+
+									</div>
+								</div>
+
+							
+
+							</div>
+							
+							
+					
+							
+							<div class="row ">
+
+								
+								
+								
+								
+								
+								
+								
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="houseNumber">House Number :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input type="number" class="form-control" id="houseNumber" tabindex="11"
+											name="houseNumber" pattern="[0-9]"
+											placeholder="Enter houseNumber " aria-label="houseNumber"
+								value="${student.address.houseNumber }"			aria-describedby="basic-addon2" required="required">
+
+									</div>
+								</div>
+								
+								<div class="col-sm-1"></div>
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="pincode">pincode :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input type="number" class="form-control"  tabindex="12" id="pincode" name="pincode" placeholder="Enter Pin Code" aria-label="houseNumber"
+								value="${student.address.pincode }"				aria-describedby="basic-addon2" required="required">
+
+									</div>
+								</div>
+
+							</div>
+					
+
+<div class="row ">
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="streetName">Street Name :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input type="text" class="form-control" id="streetName" tabindex="13" name="streetName" placeholder="Street Address"
+											aria-label="firstName" aria-describedby="basic-addon2"
+								value="${student.address.streetName }"				required="required">
+
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="city">City :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<select class="form-control" name="city" tabindex="14">
+
+            
+           
+            
+              <option value="Agra" selected="selected">Agra</option>
+              <option value="Aligarh">Aligarh</option>
+               <option value="Bangalore" >Bangalore</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Delhi">Delhi</option>
+              <option value="Etawah">Etawah</option>
+              <option value="Kanpur">Kanpur</option>
+               <option value="Kolkatta">Kolakatta</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Pune">Pune</option>
+              <option value="Hyderabad">Hyderabad</option>
+            </select>
+
+									</div>
+								</div>
+
+							</div>
+
+
+<div class="row ">
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="state">State :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										  <select class="form-control" name="state" tabindex="15">
+
+            
+            <option value="Uttar Pradesh" selected="selected">Uttar Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Telangana">Telangana</option>
+             <option value="Delhi">Delhi</option>
+             <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Karnataka">Karnataka</option>
+            
+            </select>
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="country">Country :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<select class="form-control"  name="country" tabindex="16">
+  
+            
+            <option value="India" selected="selected">India</option>
+            <option value="Nepal">Nepal</option>
+            <option value="Canada">Canada</option>
+              <option value="Israel">Israel</option>
+             
+            </select>
+
+									</div>
+								</div>
+
+							</div>
+
+
+
+							<div class="row">
+								<div class="col-sm-12 text-center">
+									<div style="color: red; font-size: 15px;">${error}</div>
+								</div>
+							</div>
+
+
+
+							<div class="row">
+								<div class="col-sm-12 text-center text-dark">
+									<input onclick="return validate()" id="regButton" type="submit" tabindex="17" value="Update"
+										class="btn btn-outline-success my-2 my-sm-0  text-dark c ">
+								</div>
+							</div>
+
+
+
+
+						</form:form>
+					</div>
+				</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
                 </main>
                   <footer class="py-4 bg-dark mt-auto">
                     <div class="container-fluid">

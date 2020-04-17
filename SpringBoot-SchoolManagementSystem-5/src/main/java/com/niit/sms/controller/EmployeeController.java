@@ -130,6 +130,33 @@ public class EmployeeController {
 	
 	
 	
+	
+	
+	@GetMapping("/viewStudent")
+	public String viewStudent(HttpServletRequest req,@RequestParam("id")int theId, Model model) {
+		if(req.getSession(false)!=null && req.getSession(false).getAttribute("employee")!=null)
+		   {
+	
+		if (service.isStudentExists(theId)) {
+			Student student = service.getStudent(theId);
+			Marks marks=empService.getMarks(theId);
+			model.addAttribute("student", student);
+			
+
+		} else {
+			model.addAttribute("usermsg", "<script>alert('Student id not found')</script>");
+		}
+		return "getStudent-teacher";
+		   }
+				else
+				{
+					model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+					   return "login-page";
+				}
+	}
+	
+	
+	
 	@GetMapping("/viewMarksPage")
 	public String viewStudentMarks(HttpServletRequest req, Model model) {
 

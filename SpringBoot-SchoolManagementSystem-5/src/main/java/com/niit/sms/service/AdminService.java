@@ -51,7 +51,7 @@ public class AdminService {
 	public boolean deleteEmployee(long id) {
 
 		try {
-			urepo.deleteByUserId(id);
+			urepo.deleteByEmail((erepo.findById(id).get()).getEmail());
 			erepo.deleteById(id);
 			return true;
 		} catch (Exception e) {
@@ -123,8 +123,9 @@ try {
 
 	public boolean deleteStudent(long id) {
 try {
+	
 			
-	urepo.deleteByUserId(id);
+	urepo.deleteByEmail((srepo.findById(id).get()).getEmail());
 	srepo.deleteById(id);
 			return true;
 		} catch (Exception e) {

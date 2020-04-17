@@ -15,9 +15,9 @@
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
-   <body class="sb-nav-fixed bg-dark">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark sb-sidenav-dark">
-            <a class="navbar-brand" href="../employee/teacherPage">Teacher Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+     <body class="sb-nav-fixed bg-light">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
+            <a class="navbar-brand text-light" href="../employee/teacherPage">Teacher Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -41,49 +41,48 @@
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion bg-success" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="../employee/teacherPage"
+                            <div class="sb-sidenav-menu-heading text-light">Core</div>
+                            <a class="nav-link text-light" href="../employee/teacherPage"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard</a
                             >
-                           <div class="sb-sidenav-menu-heading">Teacher</div>
+                           <div class="sb-sidenav-menu-heading text-light">Teacher</div>
                             
-                              <a class="nav-link" href="../employee/updateDetails"
+                              <a class="nav-link text-light" href="../employee/updateDetails"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>
                                 Update Details</a
-                            ><a class="nav-link" href="../employee/viewDetails"
+                            ><a class="nav-link text-light" href="../employee/viewDetails"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                veiw Details</a>
                              
                            
-                            <div class="sb-sidenav-menu-heading">Student</div>
+                            <div class="sb-sidenav-menu-heading text-light">Student</div>
                             
-                              <a class="nav-link" href="../employee/getStudents"
+                              <a class="nav-link text-light" href="../employee/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Student Details</a>
-                                <a class="nav-link" href="../employee/findStudent"
+                                <a class="nav-link text-light" href="../employee/findStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 Find Student Details</a>
                                 
-                                <a class="nav-link" href="../employee/uploadMarksPage"
+                                <a class="nav-link text-light" href="../employee/uploadMarksPage"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-upload" aria-hidden="true"></i></div>
                                Upload Student Marks</a>
                                
-                                <a class="nav-link" href="../employee/viewMarksPage"
+                                <a class="nav-link text-light" href="../employee/viewMarksPage"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-list" aria-hidden="true"></i></div>
                               View Student Marks</a>
                                
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer sb-sidenav-dark">
+               <!--      <div class="sb-sidenav-footer sb-sidenav-dark">
                         <div class="small">Logged in as:</div>
-                      <%out.println(request.getSession(false).getAttribute("user")); %>
-                         ${usermsg }
-                           ${error }
-                    </div>
+                     <p> 
+                        </p> 
+                    </div>--> 
                 </nav>
             </div>
             <div id="layoutSidenav_content">
@@ -91,119 +90,133 @@
                 
                 
                 
+                 <div class="card " style="width:80%;margin-left:10%;margin-top:1%;">
+  <div class="card-header bg-success text-light text-center font-weight-bold">
+  ${student.firstName}&nbsp;${student.lastName}'s Details
+  </div>
+  <br/>
+  <div class="card-body">
+  <form:form action="../employee/getStudentMarks" cssClass="form-horizontal"
+						method="post" >
+  
+  <div class="row"><div class="col-sm-2 text-center"></div><div class="col-sm-2 text-right ">
+									<p class="text-dark font-weight-bolder">
+										<label for="houseNumber">Enter Roll No:</label>
+									</p>
+								</div>
+&nbsp;
+								<div class="col-sm-2 text-center">
+
+									<div class="input-group mb-6 ">
+										<input type="number" class="form-control"  pattern="[0-9]" id="studentId" name="studentId"  aria-label="houseNumber"
+											aria-describedby="basic-addon2" required="required">
+
+									</div>
+								</div>
+								
+								
+									<div
+						class="col-md-2 "><input class="btn btn-success badge-pill" style="width:150px" type="submit" value="Find"></div>
+						<div
+						class="col-md-2 "></div>
+								</div></form:form>
+								<br/>
+								
+								
+								
+							 <c:if test="${student!=null }">	
+  	
+  
+  <br/>
+
+  	
+
+
+
+<div class="row text-left">
+<div class="col-md-3"></div>
+<div class="col-md-3 text-dark font-weight-bold">Class :</div>
+<div class="col-md-3 text-dark">${student.studentClass}</div>
+<div class="col-md-3"></div></div><br/>
+
+<div class="row text-left">
+<div class="col-md-3"></div>
+<div class="col-md-3 text-dark font-weight-bold">Contact No :</div>
+<div class="col-md-3 text-dark">${student.phoneNumber}</div>
+<div class="col-md-3"></div></div><br/>
+
+
+
+<div class="row text-left">
+<div class="col-md-3"></div>
+<div class="col-md-3 text-dark font-weight-bold">Marks in English :</div>
+<div class="col-md-3 text-dark">${marks.marksInEnglish}</div>
+<div class="col-md-3"></div></div><br/>
+
+
+<div class="row text-left">
+<div class="col-md-3"></div>
+<div class="col-md-3 text-dark font-weight-bold">Marks in Hindi :</div>
+<div class="col-md-3 text-dark">${marks.marksInHindi}</div>
+<div class="col-md-3"></div></div><br/>
+
+
+<div class="row text-left">
+<div class="col-md-3"></div>
+<div class="col-md-3 text-dark font-weight-bold">Marks in Math :</div>
+<div class="col-md-3 text-dark">${marks.marksInMath}</div>
+<div class="col-md-3"></div></div><br/>
+
+<div class="row text-left">
+<div class="col-md-3"></div>
+<div class="col-md-3 text-dark font-weight-bold">Marks in Science :</div>
+<div class="col-md-3 text-dark">${marks.marksInScience}</div>
+<div class="col-md-3"></div></div><br/>
+
+<div class="row text-left">
+<div class="col-md-3"></div>
+<div class="col-md-3 text-dark font-weight-bold">Marks in Social Science :</div>
+<div class="col-md-3 text-dark">${marks.marksInSocialScience}</div>
+<div class="col-md-3"></div></div><br/>
+
+
+<div class="row text-left">
+<div class="col-md-3"></div>
+<div class="col-md-3 text-dark font-weight-bold">Percentage :</div>
+<div class="col-md-3 text-dark">${marks.percentage}%</div>
+<div class="col-md-3"></div></div><br/>
+
+
+
+
+</c:if>	
+								
+								
+   </div>
+</div>
                 
                 
                 
                 
                 
-                 <div class="container">
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+              
 		
 			
 			
-					<form:form action="../employee/getStudentMarks" cssClass="form-horizontal"
-						method="post" >
-
-						
-						<div class="row">
-						<div class="col-md-12 ">
-			<h2 class="text-center text-light">Find Details</h2></div>
-			<br/><br/>
-						
-						
-						<div class="col-md-3"></div>
-						
-						<div
-						
-						class="col-md-2 text-light"
-						
-						
-						> <h4>Enter Id</h4></div>
-						
-						<div
-						class="col-md-3 "><input type="number" id="studentId" name="studentId" required/>
-							</div>
-						
-							
-							<div
-						class="col-md-2 "><input class="btn btn-primary badge-pill" style="width:150px" type="submit" value="Find"></div>
-						
-					</div>
-						<div class="col-md-4"></div>
-						<br/><br/>
-						
-						<c:if test="${student!=null }">		
 				
-		<div class="card text-center sb-sidenav-dark">               <!--  ../employee/uploadMarksPage-->
-  <div class="card-header  text-light sb-sidenav-dark">
-   <h5> ${student.firstName}&nbsp;${student.lastName}'s Details</h5>
-  </div>
-  	<c:url var="updateLink" value="../employee/uploadMarksPage">
-								<c:param name="id" value="${tempStudent.id}" />
-							</c:url>
-  	
-  <div class="card-body">
-  <br/>
-
-<div class="row text-left">
-<div class="col-md-3"></div>
-<div class="col-md-3 text-light">Class :</div>
-<div class="col-md-3 text-light">${student.studentClass}</div>
-<div class="col-md-3"></div></div><br/>
-
-<div class="row text-left">
-<div class="col-md-3"></div>
-<div class="col-md-3 text-light">Contact No :</div>
-<div class="col-md-3 text-light">${student.phoneNumber}</div>
-<div class="col-md-3"></div></div><br/>
-
-
-
-<div class="row text-left">
-<div class="col-md-3"></div>
-<div class="col-md-3 text-light">Marks in English :</div>
-<div class="col-md-3 text-light">${marks.marksInEnglish}</div>
-<div class="col-md-3"></div></div><br/>
-
-
-<div class="row text-left">
-<div class="col-md-3"></div>
-<div class="col-md-3 text-light">Marks in Hindi :</div>
-<div class="col-md-3 text-light">${marks.marksInHindi}</div>
-<div class="col-md-3"></div></div><br/>
-
-
-<div class="row text-left">
-<div class="col-md-3"></div>
-<div class="col-md-3 text-light">Marks in Math :</div>
-<div class="col-md-3 text-light">${marks.marksInMath}</div>
-<div class="col-md-3"></div></div><br/>
-
-<div class="row text-left">
-<div class="col-md-3"></div>
-<div class="col-md-3 text-light">Marks in Science :</div>
-<div class="col-md-3 text-light">${marks.marksInScience}</div>
-<div class="col-md-3"></div></div><br/>
-
-<div class="row text-left">
-<div class="col-md-3"></div>
-<div class="col-md-3 text-light">Marks in Social Science :</div>
-<div class="col-md-3 text-light">${marks.marksInSocialScience}</div>
-<div class="col-md-3"></div></div><br/>
-
-
-<div class="row text-left">
-<div class="col-md-3"></div>
-<div class="col-md-3 text-light">Percentage :</div>
-<div class="col-md-3 text-light">${marks.percentage}%</div>
-<div class="col-md-3"></div></div><br/>
-
-
-
-</div>
-  </div>
- 
-
-</c:if>			</form:form>
+						
+						
                 </main>
                  <footer class="py-4 bg-dark mt-auto">
                     <div class="container-fluid">

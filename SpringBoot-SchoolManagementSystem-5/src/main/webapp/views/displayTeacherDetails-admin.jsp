@@ -14,8 +14,8 @@
         <link href="../resources/static/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-    </head>    <body class="sb-nav-fixed bg-dark">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark sb-sidenav-dark">
+    </head>     <body class="sb-nav-fixed bg-white">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
             <a class="navbar-brand" href="../admin/adminPage">Admin Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -42,75 +42,73 @@
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion bg-success" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="../admin/adminPage"
+                            <div class="sb-sidenav-menu-heading text-light">Core</div>
+                            <a class="nav-link text-light" href="../admin/adminPage"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard</a
                             >
-                           <div class="sb-sidenav-menu-heading">Teacher</div>
+                           <div class="sb-sidenav-menu-heading text-light">Teacher</div>
                             
-                              <a class="nav-link" href="../admin/newTeacher"
+                              <a class="nav-link text-light" href="../admin/newTeacher"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
                                 Add Teachers</a
-                            ><a class="nav-link" href="../admin/getEmployees"
+                            ><a class="nav-link text-light" href="../admin/getEmployees"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Teacher Details</a>
-                                <a class="nav-link" href="../admin/findTeacher"
+                                <a class="nav-link text-light" href="../admin/findTeacher"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 Find Teacher Details</a>
                            
-                            <div class="sb-sidenav-menu-heading">Student</div>
+                            <div class="sb-sidenav-menu-heading text-light">Student</div>
                             
-                              <a class="nav-link" href="../admin/newStudent"
+                              <a class="nav-link text-light" href="../admin/newStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
                                 Add Students</a
-                            ><a class="nav-link" href="../admin/getStudents"
+                            ><a class="nav-link text-light" href="../admin/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Student Details</a>
-                                <a class="nav-link" href="../admin/findStudent"
+                                <a class="nav-link text-light" href="../admin/findStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 Find Student Details</a>
                             
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer sb-sidenav-dark">
-                        <div class="small">Logged in as:</div>
-                    <%out.println(request.getSession(false).getAttribute("user")); %>
-                    </div>
+            <!--         <div class=" py-2 sb-sidenav-footer bg-dark">
+                        <div class="small text-light">Logged in as:</div>
+                  <p class="text-light">  
+                   </p> </div>--> 
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
                 <br/>
-   <div class="row">
-  <div class="col-sm-12">
-  <h5 class="text-light bgmattBlackDark" align="center">Teacher Details</h5>
-   </div>
-     <div class="col-sm-12"></div>
-   
-  </div>      
-   
-   <table style="margin:10px " class="table table-dark text-secondary  table-hover table-bordered">
+
+ <div class="card" style="width: 90%;margin-left: 5%;">
+  <div class="card-header text-light text-center bg-success font-weight-bolder">
+   Teacher Details
+  </div>
+  <div class="card-body" >
+  
+    
+    
+    
+    <br/>
+    
+   <table  class=" table table-striped table-hover table-bordered">
   <thead>
-    <tr class="text-light">
-      <th scope="col">ID</th>
+    <tr class="text-dark text-center">
+      <th scope="col"> Employee ID</th>
       <th scope="col">First Name</th>
 							<th scope="col">Last Name</th>
-							
-							
+					
 							<th scope="col">Email</th>
-							<th scope="col">House Number</th>
-							<th scope="col">Street Name</th>
-							<th scope="col">City</th>
-							<th scope="col">State</th>
-							<th scope="col">Country</th>
-							<th scope="col">DOB</th>
-							<th scope="col">DOJ</th>
+						
+							<th scope="col">Date Of Joining</th>
 							<th scope="col">Phone Number</th>
-							<th scope="col"> Actions </th>
+							<th scope="colgroup" class="text-center" colspan="1"> Actions </th>
     </tr>
   </thead>
   <tbody>
@@ -126,29 +124,26 @@
 							<c:url var="deleteLink" value="/admin/deleteTeacher">
 								<c:param name="id" value="${tempEmp.id}" />
 							</c:url>
+							<c:url var="viewLink" value="/admin/viewTeacher">
+								<c:param name="id" value="${tempEmp.id}" />
+							</c:url>
   
-    <tr>
+    <tr class="text-dark">
      
       
-                                 <td>${tempEmp.id}</td>
+                                  
+								
+							 <td>${tempEmp.id}</td>
 								<td>${tempEmp.firstName}</td>
 								<td>${tempEmp.lastName}</td>
 								<td>${tempEmp.email}</td>
-								<td>${tempEmp.address.houseNumber}</td>
-								<td>${tempEmp.address.streetName}</td>
-								<td>${tempEmp.address.city}</td>
-								<td>${tempEmp.address.state}</td>
-								<td>${tempEmp.address.country}</td>
-								<td>${ tempEmp.dateOfBirth}</td>
-								<td>${ tempEmp.dateofJoining}</td>
-								<td>${tempEmp.phoneNumber}</td>
-						
 							
-
-								<td class="text-right" style="height: 100px">
+ <td>${ tempEmp.dateofJoining}</td>
+								<td>${tempEmp.phoneNumber}</td>
+								<td class="text-center" >
 								
-									<!-- display the update link --> <a  class="btn btn-primary badge-pill" style="width:80px" href="${updateLink}">Update</a>
-									<br/><br/> <a  class="btn btn-danger badge-pill" style="width:80px" href="${deleteLink}"
+									<!-- display the update link --> <a  class="btn btn-success badge-pill" style="width:80px" href="${viewLink}">Details</a>&nbsp;&nbsp; <a  class="btn btn-primary badge-pill" style="width:80px" href="${updateLink}">Update</a>
+									&nbsp;&nbsp; <a  class="btn btn-danger badge-pill" style="width:80px" href="${deleteLink}"
 									onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
 								</td>
 
@@ -158,7 +153,21 @@
    
    
   </tbody>
-</table> 
+</table>   
+    
+    
+    
+  </div>
+</div>
+             
+             
+  
+  
+  
+   
+      
+         
+        
                 </main>
                    <footer class="py-4 bg-dark mt-auto">
                     <div class="container-fluid">

@@ -36,9 +36,9 @@
    
    </script>
     </head>
-    <body class="sb-nav-fixed bg-dark">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark sb-sidenav-dark">
-            <a class="navbar-brand" href="../employee/teacherPage">Teacher Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+        <body class="sb-nav-fixed bg-light">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
+            <a class="navbar-brand text-light" href="../employee/teacherPage">Teacher Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -62,54 +62,53 @@
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion bg-success" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="../employee/teacherPage"
+                            <div class="sb-sidenav-menu-heading text-light">Core</div>
+                            <a class="nav-link text-light" href="../employee/teacherPage"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard</a
                             >
-                           <div class="sb-sidenav-menu-heading">Teacher</div>
+                           <div class="sb-sidenav-menu-heading text-light">Teacher</div>
                             
-                              <a class="nav-link" href="../employee/updateDetails"
+                              <a class="nav-link text-light" href="../employee/updateDetails"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>
                                 Update Details</a
-                            ><a class="nav-link" href="../employee/viewDetails"
+                            ><a class="nav-link text-light" href="../employee/viewDetails"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                veiw Details</a>
                              
                            
-                            <div class="sb-sidenav-menu-heading">Student</div>
+                            <div class="sb-sidenav-menu-heading text-light">Student</div>
                             
-                              <a class="nav-link" href="../employee/getStudents"
+                              <a class="nav-link text-light" href="../employee/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Student Details</a>
-                                <a class="nav-link" href="../employee/findStudent"
+                                <a class="nav-link text-light" href="../employee/findStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 Find Student Details</a>
                                 
-                                <a class="nav-link" href="../employee/uploadMarksPage"
+                                <a class="nav-link text-light" href="../employee/uploadMarksPage"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-upload" aria-hidden="true"></i></div>
                                Upload Student Marks</a>
                                
-                                <a class="nav-link" href="../employee/viewMarksPage"
+                                <a class="nav-link text-light" href="../employee/viewMarksPage"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-list" aria-hidden="true"></i></div>
                               View Student Marks</a>
                                
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer">
+               <!--      <div class="sb-sidenav-footer sb-sidenav-dark">
                         <div class="small">Logged in as:</div>
-                    v
-                         ${usermsg }
-                           ${error }
-                    </div>
+                     <p> 
+                        </p> 
+                    </div>--> 
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                <div align="center" style="border: 1px;margin-top:150px;margin-left:500px; border-radius: 20px;height: 350px; width: 500px"  class="sb-sidenav-dark text-white">
+            <!--     <div align="center" style="border: 1px;margin-top:150px;margin-left:500px; border-radius: 20px;height: 350px; width: 500px"  class="sb-sidenav-dark text-white">
 	<div class="container">
 		<div >
 			<h4 style="padding-top: 30px"   class="text-center text-light">Change Password</h4>
@@ -166,7 +165,81 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
+	   	<div class="card bg-success" style="width: 40%;margin-left: 29% ; margin-top: 9%;border-radius: 10px">
+  <div class="card-header text-center text-light">
+   Change Password
+  </div>
+  <div class="card-body bg-light" style="border-radius: 15px">
+<form:form action="../employee/changePassword" 
+						method="post" >
+
+					
+
+
+						<div class="row"><div class="col-sm-1  text-center" ></div>
+					<div class="col-sm-4  text-center" >
+						<p class="text-dark"><label for="password">Password</label></p>
+</div>
+
+&nbsp;&nbsp;<div class="col-sm-6 ">
+
+<div class="input-group mb-3">
+  <input type="password" id="password" class="form-control" tabindex="1" name="password" required="required" placeholder="Enter password" aria-label="password" aria-describedby="basic-addon2">
+  
+</div>
+
+</div></div>
+
+
+
+<div class="row"><div class="col-sm-1  text-center" ></div>
+					<div class="col-sm-4  text-center" >
+						<p class="text-dark"><label for="password">New Password</label></p>
+</div>
+
+&nbsp;&nbsp;<div class="col-sm-6 ">
+<!--  <input id="password" name="password" placeholder="Enter password" required tabindex="2" type="password">-->
+
+<div class="input-group mb-3">
+  <input type="password" id="newPassword" class="form-control"  tabindex="2" name="newPassword" required="required" placeholder="Enter password" aria-label="password" aria-describedby="basic-addon2">
+  
+</div>
+
+</div></div>
+
+
+
+
+<div class="row"><div class="col-sm-1  text-center" ></div>
+					<div class="col-sm-4  text-center" >
+						<p class="text-dark"><label for="password"> Confirm Password</label></p>
+</div>
+
+&nbsp;&nbsp;<div class="col-sm-6 ">
+<!--  <input id="password" name="password" placeholder="Enter password" required tabindex="2" type="password">-->
+
+<div class="input-group mb-3">
+  <input  type="password" id="confirmPassword" class="form-control" tabindex="3" name="confirmPassword" onblur="checkPassword()" required="required" placeholder="Enter password" aria-label="password" aria-describedby="basic-addon2">
+  
+</div>
+
+</div></div>
+
+
+
+<div class="row">
+<div class="col-sm-12 text-center"><div style="color: red;font-size: 15px; ">${error}</div></div></div>
+						
+						<div class="row"><div class="col-sm-12 text-center text-dark"><input tabindex="4" onclick="return validate()" type="submit" value="Change Password" class="btn btn-outline-success my-2 my-sm-0  text-dark">
+						</div></div>
+						
+						
+						
+						
+					</form:form>
+  </div>
+</div>
                
                
                

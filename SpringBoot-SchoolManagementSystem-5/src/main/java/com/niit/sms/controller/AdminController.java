@@ -90,11 +90,17 @@ public String changePassword(HttpServletRequest req,Model model)
 
 @GetMapping("/adminPage")
 public String getAdminPage(HttpServletRequest req,ModelMap model){
-	
+	 if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
+	   {
 	HttpSession s=req.getSession(false);
 	s.setAttribute("studentCount",service.countStudent());
 	s.setAttribute("teacherCount",service.countEmployee());
-	
+	   }
+	 else
+	 {
+		 model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+		   return "login-page";
+	 }
 	
 	
 return "admin-page";	
@@ -306,6 +312,8 @@ return "admin-page";
 			   return "login-page";
 		}}
 
+	
+	
 	@PostMapping("/getStudent")
 	public String getStudent(HttpServletRequest req, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
@@ -327,7 +335,68 @@ return "admin-page";
 					   return "login-page";
 				}
 	}
+	@GetMapping("/viewStudent")
+	
+	public String viewStudent(HttpServletRequest req,@RequestParam("id") int theId, Model model) {
+		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
+		   {
+		
 
+		if (service.isStudentExists(theId)) {
+			Student student = service.getStudent(theId);
+			model.addAttribute("student", student);
+
+		} else {
+			model.addAttribute("usermsg", "<script>alert('Student id not found')</script>");
+		}
+		return "find-student-admin";
+		   }
+				else
+				{
+					model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+					   return "login-page";
+				}
+	}
+
+	
+	
+	
+	
+	@GetMapping("/viewTeacher")
+	public String viewTeacher(HttpServletRequest req,@RequestParam("id") int theId, Model model) {
+		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
+		   {
+		
+		if (service.isEmployeeExists(theId)) {
+			Employee employee = service.getEmployee(theId);
+			model.addAttribute("teacher", employee);
+
+		} else {
+			model.addAttribute("usermsg", "<script>alert('Teacher id not found')</script>");
+		}
+		return "find-teacher-admin";
+
+	   }
+			else
+			{
+				model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+				   return "login-page";
+			}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@PostMapping("/getTeacher")
 	public String getTeacher(HttpServletRequest req, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)

@@ -15,9 +15,9 @@
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
-     <body class="sb-nav-fixed bg-dark">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark sb-sidenav-dark">
-            <a class="navbar-brand" href="../employee/teacherPage">Teacher Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+        <body class="sb-nav-fixed bg-light">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
+            <a class="navbar-brand text-light" href="../employee/teacherPage">Teacher Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -41,49 +41,48 @@
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion bg-success" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="../employee/teacherPage"
+                            <div class="sb-sidenav-menu-heading text-light">Core</div>
+                            <a class="nav-link text-light" href="../employee/teacherPage"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard</a
                             >
-                           <div class="sb-sidenav-menu-heading">Teacher</div>
+                           <div class="sb-sidenav-menu-heading text-light">Teacher</div>
                             
-                              <a class="nav-link" href="../employee/updateDetails"
+                              <a class="nav-link text-light" href="../employee/updateDetails"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>
                                 Update Details</a
-                            ><a class="nav-link" href="../employee/viewDetails"
+                            ><a class="nav-link text-light" href="../employee/viewDetails"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                veiw Details</a>
                              
                            
-                            <div class="sb-sidenav-menu-heading">Student</div>
+                            <div class="sb-sidenav-menu-heading text-light">Student</div>
                             
-                              <a class="nav-link" href="../employee/getStudents"
+                              <a class="nav-link text-light" href="../employee/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Student Details</a>
-                                <a class="nav-link" href="../employee/findStudent"
+                                <a class="nav-link text-light" href="../employee/findStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 Find Student Details</a>
                                 
-                                <a class="nav-link" href="../employee/uploadMarksPage"
+                                <a class="nav-link text-light" href="../employee/uploadMarksPage"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-upload" aria-hidden="true"></i></div>
                                Upload Student Marks</a>
                                
-                                <a class="nav-link" href="../employee/viewMarksPage"
+                                <a class="nav-link text-light" href="../employee/viewMarksPage"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-list" aria-hidden="true"></i></div>
                               View Student Marks</a>
                                
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer sb-sidenav-dark">
+               <!--      <div class="sb-sidenav-footer sb-sidenav-dark">
                         <div class="small">Logged in as:</div>
-                      <%out.println(request.getSession(false).getAttribute("user")); %>
-                         ${usermsg }
-                           ${error }
-                    </div>
+                     <p> 
+                        </p> 
+                    </div>--> 
                 </nav>
             </div>
             <div id="layoutSidenav_content">
@@ -91,7 +90,7 @@
                 
                 
                 
-                <div  align="center" style="border: 1px;margin-top:30px;margin-left:500px; border-radius: 30px;height: 620px; width: 450px"  class="sb-sidenav-dark text-white">
+      <!--          <div  align="center" style="border: 1px;margin-top:30px;margin-left:500px; border-radius: 30px;height: 620px; width: 450px"  class="sb-sidenav-dark text-white">
 	
 	<div class="container">
 		<div >
@@ -182,7 +181,375 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 	</div>
                 
                 
-                
+                -->
+                <div class="card bg-success"
+					style="width: 75%; margin-left: 13%; margin-top: 3%; border-radius: 10px">
+					<div class="card-header text-center text-light">Update Personal Details</div>
+					<div class="card-body bg-light" style="border-radius: 10px;">
+						<form:form id="registrationform" action="../employee/updateInformation"
+						method="post" modelAttribute="employee">
+							<div class="row">
+								<div class="col-sm-12" align="left">
+									<input type="hidden" value="${employee.id }" name="id" id="id" hidden="" />
+								</div>
+							</div>
+
+							<div class="row ">
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="firstName">First Name :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input type="text" class="form-control" id="firstName"
+											name="firstName" placeholder="Enter First Name"
+						tabindex="1"		value="${employee.firstName }"			aria-label="firstName" aria-describedby="basic-addon2"
+											required="required">
+
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="firstName">Last Name :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input type="text" class="form-control" id="lastName"
+											name="lastName" placeholder="Enter last name"
+						tabindex="2"	value="${employee.lastName }"				aria-label="lastName" aria-describedby="basic-addon2"
+											required="required">
+
+									</div>
+								</div>
+
+							</div>
+
+
+
+
+
+
+
+
+
+							<div class="row ">
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="email">Email :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input class="form-control" id="email" name="email"
+											placeholder="Enter Email " tabindex="5" type="email"
+											aria-label="email" aria-describedby="basic-addon2"
+			tabindex="3"				value="${employee.email }"				required="required">
+
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="password">Password :</label>
+									</p>
+								</div>
+                                     
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input class="form-control" type="password" id="password"
+											name="password" placeholder="Enter password "
+											aria-label="password" aria-describedby="basic-addon2"
+						tabindex="4"					required="required">
+
+									</div>
+								</div>
+								
+
+							</div>
+<div class="row">
+								<div class="col-sm-8 text-center"></div>
+								<div class="col-sm-3 text-center">
+									<div style="color: red; font-size: 15px;">${error}</div>
+								</div>
+							</div>
+							<div class="row ">
+							
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="DateOfBirth">Date Of Birth :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input type="date" class="form-control"  id="dateOfBirth" value="${employee.dateOfBirth }"
+       min="1994-01-01" max="2016-12-31" tabindex="5" name="dateOfBirth" tabindex="4">
+
+									</div>
+								</div>
+							
+							
+
+								<div class="col-sm-1"></div>
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="confirmPassword">Confirm Password :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input class="form-control" type="password"
+											id="confirmPassword" name="confirmPassword"
+										tabindex="6"	placeholder="Enter password  " aria-label="confirmPassword"
+											aria-describedby="basic-addon2" required="required" onblur="check()">
+
+									</div>
+								</div>
+								
+
+							</div><div class="row">
+								<div class="col-sm-8 text-center"></div>
+								<div class="col-sm-3 text-center">
+									<div style="color: red; font-size: 15px;"><p id="confirm"></p></div>
+								</div>
+							</div>
+
+
+
+
+<div class="row ">
+
+								
+								
+								
+									<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="phoneNumber">Phone Number :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input id="phone" name="phoneNumber"
+											placeholder="phone number" required tabindex="6" type="tel"
+											tabindex="7" pattern="[0-9]{10}" class="form-control"
+									value="${employee.phoneNumber }"		aria-label="lastName" aria-describedby="basic-addon2">
+
+									</div>
+								</div>
+								
+								
+								<div class="col-sm-1"></div>
+								
+									<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="AlternateNumber">Alternate Number :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input id="phone" name="alternateNumber"
+											placeholder="alternate number" required tabindex="6" type="tel"
+									tabindex="8"		pattern="[0-9]{10}" class="form-control"
+											aria-label="lastName" aria-describedby="basic-addon2">
+
+									</div>
+								</div>
+
+							
+
+							</div>
+							
+							
+					
+							
+							<div class="row ">
+
+								
+								
+								
+								
+								
+								
+								
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="houseNumber">House Number :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input type="number" class="form-control" id="houseNumber"
+											name="houseNumber" pattern="[0-9]"
+											placeholder="Enter houseNumber " aria-label="houseNumber"
+									tabindex="9"	value="${employee.address.houseNumber }"	aria-describedby="basic-addon2" required="required">
+
+									</div>
+								</div>
+								
+								<div class="col-sm-1"></div>
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="pincode">pincode :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input type="number" class="form-control" id="pincode" name="pincode" placeholder="Enter Pin Code" aria-label="houseNumber"
+							tabindex="9"		value="${employee.address.pincode }"		aria-describedby="basic-addon2" required="required">
+
+									</div>
+								</div>
+
+							</div>
+					
+
+<div class="row ">
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="streetName">Street Name :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<input type="text" class="form-control" id="streetName" name="streetName" placeholder="Street Address"
+									tabindex="10"		aria-label="firstName" aria-describedby="basic-addon2"
+									value="${employee.address.streetName }"		required="required">
+
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="city">City :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<select class="form-control" tabindex="11" name="city" tabindex="9">
+
+            
+           
+            
+              <option value="Agra" selected="selected">Agra</option>
+              <option value="Aligarh">Aligarh</option>
+               <option value="Bangalore" >Bangalore</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Delhi">Delhi</option>
+              <option value="Etawah">Etawah</option>
+              <option value="Kanpur">Kanpur</option>
+               <option value="Kolkatta">Kolakatta</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Pune">Pune</option>
+              <option value="Hyderabad">Hyderabad</option>
+            </select>
+
+									</div>
+								</div>
+
+							</div>
+
+
+<div class="row ">
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="state">State :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										  <select class="form-control" tabindex="12" name="state" tabindex="10">
+
+            
+            <option value="Uttar Pradesh" selected="selected">Uttar Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Telangana">Telangana</option>
+             <option value="Delhi">Delhi</option>
+             <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Karnataka">Karnataka</option>
+            
+            </select>
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+
+								<div class="col-sm-2 text-center">
+									<p class="text-dark">
+										<label for="country">Country :</label>
+									</p>
+								</div>
+
+								<div class="col-sm-3 text-left">
+
+									<div class="input-group mb-6 ">
+										<select class="form-control" tabindex="13"  name="country" tabindex="11">
+  
+            
+            <option value="India" selected="selected">India</option>
+            <option value="Nepal">Nepal</option>
+            <option value="Canada">Canada</option>
+              <option value="Israel">Israel</option>
+             
+            </select>
+
+									</div>
+								</div>
+
+							</div>
+
+
+
+							
+
+
+							<div class="row">
+								<div class="col-sm-12 text-center text-dark">
+									<input onclick="return validate()" id="regButton" type="submit" value="Update"
+									tabindex="14"	class="btn btn-outline-success my-2 my-sm-0  text-dark c ">
+								</div>
+							</div>
+
+
+
+
+						</form:form>
+					</div>
+				</div>
                 
                 
                 </main>
