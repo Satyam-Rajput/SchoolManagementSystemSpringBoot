@@ -14,8 +14,35 @@
         <link href="../resources/static/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    
+    
+    
+    <script>
+	 function validate()
+     {
+  	  
+  	   var newpass=document.getElementById("password").value
+  	   var conpass=document.getElementById("confirmPassword").value;
+  	   
+  	   if(newpass!=conpass)
+  		   {
+  		 
+  		  document.getElementById("warningLabel").innerHTML="Password doesn't match";
+  		  return false;
+  		   }
+  	   else
+  		   {
+  		   document.getElementById("warningLabel").innerHTML=" ";
+  		   return true;
+  		   }
+     }
+	</script>
+    
+    
+    
+    
     </head>
-       <body class="sb-nav-fixed bg-white">
+        <body class="sb-nav-fixed bg-white">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
             <a class="navbar-brand" href="../admin/adminPage">Admin Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
@@ -37,8 +64,7 @@
                         <a class="dropdown-item" href="../user/logout">Logout</a>
                     </div>
                 </li>
-                ${usermsg }
-                ${error }
+              
             </ul>
         </nav>
         <div id="layoutSidenav">
@@ -55,7 +81,7 @@
                             
                               <a class="nav-link text-light" href="../admin/newTeacher"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                                Add Teachers</a
+                                Register Teachers</a
                             ><a class="nav-link text-light" href="../admin/getEmployees"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Teacher Details</a>
@@ -67,7 +93,7 @@
                             
                               <a class="nav-link text-light" href="../admin/newStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                                Add Students</a
+                                Register Students</a
                             ><a class="nav-link text-light" href="../admin/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Student Details</a>
@@ -211,8 +237,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 	
 		<div class="card bg-success"
 					style="width: 75%; margin-left: 13%; margin-top: 3%; border-radius: 10px">
-					<div class="card-header text-center text-light">Student
-						Registration</div>
+					<div class="card-header text-center text-light font-weight-bolder">Update Student Details</div>
 					<div class="card-body bg-light" style="border-radius: 10px;">
 						<form:form id="addStudentForm" action="../admin/updateStudentDetails" cssClass="form-horizontal"
 						method="post" modelAttribute="student">
@@ -224,7 +249,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 
 							<div class="row ">
 
-								<div class="col-sm-2 text-center">
+								<div class="col-sm-2 text-left" style="margin-left: 2%">
 									<p class="text-dark">
 										<label for="firstName">First Name :</label>
 									</p>
@@ -242,7 +267,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 								</div>
 								<div class="col-sm-1"></div>
 
-								<div class="col-sm-2 text-center">
+								<div class="col-sm-2 text-left">
 									<p class="text-dark">
 										<label for="firstName">Last Name :</label>
 									</p>
@@ -271,7 +296,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 
 							<div class="row ">
 
-								<div class="col-sm-2 text-center">
+								<div class="col-sm-2 text-left" style="margin-left: 2%">
 									<p class="text-dark">
 										<label for="fatherName">Father Name :</label>
 									</p>
@@ -288,7 +313,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 								</div>
 								<div class="col-sm-1"></div>
 
-							<div class="col-sm-2 text-center">
+							<div class="col-sm-2 text-left" >
 									<p class="text-dark">
 										<label for="studentClass"> Class :</label>
 									</p>
@@ -314,7 +339,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 
 							<div class="row ">
 
-								<div class="col-sm-2 text-center">
+								<div class="col-sm-2 text-left" style="margin-left: 2%">
 									<p class="text-dark">
 										<label for="email">Email :</label>
 									</p>
@@ -332,7 +357,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 								</div>
 								<div class="col-sm-1"></div>
 
-								<div class="col-sm-2 text-center">
+								<div class="col-sm-2 text-left">
 									<p class="text-dark">
 										<label for="password">Password :</label>
 									</p>
@@ -359,7 +384,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 							</div>
 							<div class="row ">
 							
-								<div class="col-sm-2 text-center">
+								<div class="col-sm-2 text-left" style="margin-left: 2%">
 									<p class="text-dark">
 										<label for="DateOfBirth">Date Of Birth :</label>
 									</p>
@@ -378,7 +403,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 
 								<div class="col-sm-1"></div>
 
-								<div class="col-sm-2 text-center">
+								<div class="col-sm-2 text-left">
 									<p class="text-dark">
 										<label for="confirmPassword">Confirm Password :</label>
 									</p>
@@ -390,28 +415,26 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 										<input class="form-control" type="password" tabindex="8"
 											id="confirmPassword" name="confirmPassword"
 											placeholder="Enter password  " aria-label="confirmPassword"
-											aria-describedby="basic-addon2" required="required" onblur="check()">
+											aria-describedby="basic-addon2" required="required" onblur="validate()">
 
 									</div>
 								</div>
 								
 
-							</div><div class="row">
-								<div class="col-sm-8 text-center"></div>
-								<div class="col-sm-3 text-center">
-									<div style="color: red; font-size: 15px;"><p id="confirm"></p></div>
-								</div>
 							</div>
 
 
 
+<div class="row"><div class="col-sm-12 text-right"><div style="color: red;font-size: 12px;margin-right: 15%  "><label id="warningLabel" name="warningLabel"></label></div></div>
+
+</div>
 
 <div class="row ">
 
 								
 								
 								
-									<div class="col-sm-2 text-center">
+									<div class="col-sm-2 text-left" style="margin-left: 2%">
 									<p class="text-dark">
 										<label for="phoneNumber">Phone Number :</label>
 									</p>
@@ -431,7 +454,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 								
 								<div class="col-sm-1"></div>
 								
-									<div class="col-sm-2 text-center">
+									<div class="col-sm-2 text-left">
 									<p class="text-dark">
 										<label for="AlternateNumber">Alternate Number :</label>
 									</p>
@@ -464,7 +487,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 								
 								
 								
-								<div class="col-sm-2 text-center">
+								<div class="col-sm-2 text-left" style="margin-left: 2%">
 									<p class="text-dark">
 										<label for="houseNumber">House Number :</label>
 									</p>
@@ -483,7 +506,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 								
 								<div class="col-sm-1"></div>
 
-								<div class="col-sm-2 text-center">
+								<div class="col-sm-2 text-left">
 									<p class="text-dark">
 										<label for="pincode">pincode :</label>
 									</p>
@@ -503,7 +526,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 
 <div class="row ">
 
-								<div class="col-sm-2 text-center">
+								<div class="col-sm-2 text-left" style="margin-left: 2%">
 									<p class="text-dark">
 										<label for="streetName">Street Name :</label>
 									</p>
@@ -520,7 +543,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 								</div>
 								<div class="col-sm-1"></div>
 
-								<div class="col-sm-2 text-center">
+								<div class="col-sm-2 text-left">
 									<p class="text-dark">
 										<label for="city">City :</label>
 									</p>
@@ -555,7 +578,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 
 <div class="row ">
 
-								<div class="col-sm-2 text-center">
+								<div class="col-sm-2 text-left" style="margin-left: 2%">
 									<p class="text-dark">
 										<label for="state">State :</label>
 									</p>
@@ -579,7 +602,7 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 								</div>
 								<div class="col-sm-1"></div>
 
-								<div class="col-sm-2 text-center">
+								<div class="col-sm-2 text-left">
 									<p class="text-dark">
 										<label for="country">Country :</label>
 									</p>
@@ -605,11 +628,8 @@ pattern="[0-9]{10}"></div></div><div class="row"><div class="col-sm-6" align="le
 
 
 
-							<div class="row">
-								<div class="col-sm-12 text-center">
-									<div style="color: red; font-size: 15px;">${error}</div>
-								</div>
-							</div>
+						<div class="row"><div class="col-sm-12 text-center"><div style="color: red;font-size: 15px; "><label >${errormsg} ${usermsg }</label></div></div>
+</div>
 
 
 

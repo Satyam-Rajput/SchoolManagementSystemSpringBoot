@@ -21,16 +21,18 @@ function validate()
 	var pass=document.getElementById("password").value;
 	if(email==null || email=="")
 		{
-		alert('Please Enter email')
+		document.getElementById("warningLabel").innerHTML='Please Enter email'
 		return false;
 		}
 	else if(pass==''||pass==null)
 		{
-		alert('please Enter password')
+		document.getElementById("warningLabel").innerHTML='Please Enter password'
 		return false;
 		}
 	else
-		{return true;}
+		{
+		document.getElementById("warningLabel").innerHTML=' '
+		return true;}
 	
 	}
 
@@ -132,8 +134,7 @@ function validate()
   
 </div>
 </div></div>
-<div class="row">
-<div class="col-sm-12 text-center"><div style="color: red;font-size: 15px; ">${error}</div></div></div>
+
 
 						<div class="row"><div class="col-sm-1  text-center" ></div>
 					<div class="col-sm-4  text-center" >
@@ -149,6 +150,8 @@ function validate()
 </div>
 
 </div></div>
+				
+				<div class="row"><div class="col-sm-12 text-danger text-center" style="font-size:15px;font-style: italic; "><label id="warningLabel" name="warningLabel">${error} ${usermsg}</label></div></div>
 						
 						<div class="row"><div class="col-sm-12 text-center text-dark"><input onclick="return validate()" type="submit" tabindex="3" value="Login" class="btn btn-outline-success my-2 my-sm-0  text-dark">
 						</div></div>

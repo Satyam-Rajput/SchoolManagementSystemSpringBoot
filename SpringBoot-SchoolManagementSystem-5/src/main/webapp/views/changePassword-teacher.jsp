@@ -10,14 +10,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard- Admin</title>
+        <title>Dashboard Teacher</title>
         <link href="../resources/static/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
    
    <script>
    
-   function checkPassword()
+   function validate()
    {
 	  
 	   var newpass=document.getElementById("newPassword").value
@@ -25,18 +25,20 @@
 	   
 	   if(newpass!=conpass)
 		   {
-		  
+		 
 		  document.getElementById("warningLabel").innerHTML="Password doesn't match";
+		  return false;
 		   }
 	   else
 		   {
 		   document.getElementById("warningLabel").innerHTML=" ";
+		   return true;
 		   }
    }
    
    </script>
     </head>
-        <body class="sb-nav-fixed bg-light">
+         <body class="sb-nav-fixed bg-light">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
             <a class="navbar-brand text-light" href="../employee/teacherPage">Teacher Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
@@ -77,7 +79,7 @@
                                 Update Details</a
                             ><a class="nav-link text-light" href="../employee/viewDetails"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                               veiw Details</a>
+                               View Details</a>
                              
                            
                             <div class="sb-sidenav-menu-heading text-light">Student</div>
@@ -167,7 +169,7 @@
 		</div>
 	</div>-->
 	   	<div class="card bg-success" style="width: 40%;margin-left: 29% ; margin-top: 9%;border-radius: 10px">
-  <div class="card-header text-center text-light">
+  <div class="card-header text-center text-light font-weight-bolder">
    Change Password
   </div>
   <div class="card-body bg-light" style="border-radius: 15px">
@@ -177,8 +179,8 @@
 					
 
 
-						<div class="row"><div class="col-sm-1  text-center" ></div>
-					<div class="col-sm-4  text-center" >
+						<div class="row"><div class="col-sm-1  text-left" ></div>
+					<div class="col-sm-4  text-left" style="margin-left: 2%">
 						<p class="text-dark"><label for="password">Password</label></p>
 </div>
 
@@ -193,8 +195,8 @@
 
 
 
-<div class="row"><div class="col-sm-1  text-center" ></div>
-					<div class="col-sm-4  text-center" >
+<div class="row"><div class="col-sm-1  text-left"></div>
+					<div class="col-sm-4  text-left" style="margin-left: 2%" >
 						<p class="text-dark"><label for="password">New Password</label></p>
 </div>
 
@@ -211,8 +213,8 @@
 
 
 
-<div class="row"><div class="col-sm-1  text-center" ></div>
-					<div class="col-sm-4  text-center" >
+<div class="row"><div class="col-sm-1  text-left" ></div>
+					<div class="col-sm-4  text-left" style="margin-left: 2%">
 						<p class="text-dark"><label for="password"> Confirm Password</label></p>
 </div>
 
@@ -220,7 +222,7 @@
 <!--  <input id="password" name="password" placeholder="Enter password" required tabindex="2" type="password">-->
 
 <div class="input-group mb-3">
-  <input  type="password" id="confirmPassword" class="form-control" tabindex="3" name="confirmPassword" onblur="checkPassword()" required="required" placeholder="Enter password" aria-label="password" aria-describedby="basic-addon2">
+  <input  type="password" id="confirmPassword" class="form-control" tabindex="3" name="confirmPassword" onblur="validate()" required="required" placeholder="Enter password" aria-label="password" aria-describedby="basic-addon2">
   
 </div>
 
@@ -229,7 +231,7 @@
 
 
 <div class="row">
-<div class="col-sm-12 text-center"><div style="color: red;font-size: 15px; ">${error}</div></div></div>
+<div class="col-sm-12 text-center"><div style="color: red;font-size: 15px;font-style:italic;  "><label id="warningLabel" name="warningLabel">${error} ${usermsg}${errormsg }</label></div></div></div>
 						
 						<div class="row"><div class="col-sm-12 text-center text-dark"><input tabindex="4" onclick="return validate()" type="submit" value="Change Password" class="btn btn-outline-success my-2 my-sm-0  text-dark">
 						</div></div>

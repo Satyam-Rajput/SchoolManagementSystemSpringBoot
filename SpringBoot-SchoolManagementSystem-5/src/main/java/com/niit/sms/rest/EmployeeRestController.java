@@ -29,7 +29,7 @@ import com.niit.sms.service.LoginService;
 @CrossOrigin(origins = "*")
 @RequestMapping(value = "/api/employee")
 public class EmployeeRestController {
-
+/*
 	@Autowired
 	private AdminService service;
 	@Autowired
@@ -195,6 +195,6 @@ public class EmployeeRestController {
 		}
 
 		return false;
-	}
+	}*/
 
 }

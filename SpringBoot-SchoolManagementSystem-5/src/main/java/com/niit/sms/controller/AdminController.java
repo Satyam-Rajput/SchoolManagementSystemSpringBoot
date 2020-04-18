@@ -38,6 +38,7 @@ public class AdminController {
 		return "index";
 	}
 	
+	
 @GetMapping("/changePasswordPage")
 
 public String changePasswordPage()
@@ -63,24 +64,24 @@ public String changePassword(HttpServletRequest req,Model model)
 	if(loginService.save(u))
 	{
 	
-	model.addAttribute("usermsg", "<script>alert('Password changed successfully')</script>");
+	model.addAttribute("usermsg", "Password changed successfully");
 	}
 	
 	else
-	{model.addAttribute("error", "<script>alert('fail to change Password')</script>");
+	{model.addAttribute("error", "failed to change Password");
 		
 	}
-	return "admin-page";
+	return "changePassword-admin";
 	}
 	else
 	{
-		 model.addAttribute("error", "<script>alert('Incorrect Password')</script>");
+		 model.addAttribute("error", "Incorrect Password");
 		
 	}
 	}
 	else
 	{
-		 model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+		 model.addAttribute("error", "Please Login Again");
 		
 		   
 		
@@ -98,7 +99,7 @@ public String getAdminPage(HttpServletRequest req,ModelMap model){
 	   }
 	 else
 	 {
-		 model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+		 model.addAttribute("error", "Please Login Again");
 		   return "login-page";
 	 }
 	
@@ -118,7 +119,7 @@ return "admin-page";
    else
    {
 	   
-	   model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+	   model.addAttribute("error", "Please Login Again");
 	   return "login-page";
 	   
    }
@@ -144,9 +145,9 @@ return "admin-page";
 		
 
 			if(service.save(theEmployee))
-			{model.addAttribute("usermsg", "<script>alert('Registered SuccessFully')</script>");}
+			{model.addAttribute("usermsg", "Registered SuccessFully");}
 			else
-			{model.addAttribute("usermsg", "<script>alert('failed to Register')</script>");}
+			{model.addAttribute("errormsg", "failed to Register");}
 
 			HttpSession s=req.getSession(false);
 			s.setAttribute("studentCount",service.countStudent());
@@ -154,14 +155,14 @@ return "admin-page";
 			
 		} 
 		else {
-			model.addAttribute("error", "<script>alert('Email already registered')</script>");
+			model.addAttribute("errormsg", "Email already registered");
 		}
-		return "admin-page";
+		return "addTeacher-admin";
 		
 		   }
 		else
 		{
-			   model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			   model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 			   			
 		}
@@ -175,13 +176,13 @@ return "admin-page";
 		   {
 		List<Employee> employees = service.listAllEmployees();
 		if(employees.size()==0)
-			model.addAttribute("error", "<script>alert('No record found')</script>");
+			model.addAttribute("error", "No record found");
 		model.addAttribute("employees", employees);
 		return "displayTeacherDetails-admin";
 		   }
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}
 	}
@@ -197,7 +198,7 @@ return "admin-page";
 		   }
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}
 	}
@@ -218,11 +219,11 @@ return "admin-page";
 			theStudent.setDateofJoining(new java.sql.Date(new Date().getTime()));
 			theStudent.setAddress(a);
 			a.setStudent(theStudent);
-			model.addAttribute("usermsg", "<script>alert('Registered SuccessFully')</script>");
+			
 			if(service.save(theStudent))
-			{model.addAttribute("usermsg", "<script>alert('Registered SuccessFully')</script>");}
+			{model.addAttribute("usermsg", "Registered SuccessFully");}
 			else
-			{model.addAttribute("usermsg", "<script>alert('failed to Register')</script>");}
+			{model.addAttribute("errormsg", "failed to Register");}
 		
 			HttpSession s=req.getSession(false);
 			s.setAttribute("studentCount",service.countStudent());
@@ -232,13 +233,13 @@ return "admin-page";
 		
 		else
 		{
-			model.addAttribute("error", "<script>alert('Email already registered')</script>");
+			model.addAttribute("errormsg", "Email already registered");
 		}
-		return "admin-page";
+		return "addStudent-admin";
 		   }
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}
 	}
@@ -249,14 +250,14 @@ return "admin-page";
 		   {
 		List<Student> students = service.listAllStudents();
 		if(students.size()==0)
-			model.addAttribute("error", "<script>alert('No record found')</script>");
+			model.addAttribute("error", "No record found");
 		model.addAttribute("students", students);
 		return "displayStudentDetails-admin";
 
 		   }
 				else
 				{
-					model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+					model.addAttribute("error", "Please Login Again");
 					   return "login-page";
 				}
 		   }
@@ -272,14 +273,14 @@ return "admin-page";
 				return "redirect:../admin/getStudents";
 		List<Student> students = service.filterStudentByClass(studentClass);
 		if(students.size()==0)
-			model.addAttribute("error", "<script>alert('No record found')</script>");
+			model.addAttribute("error", "No record found");
 		model.addAttribute("students", students);
 		return "displayStudentDetails-admin";
 
 		   }
 				else
 				{
-					model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+					model.addAttribute("error", "Please Login Again");
 					   return "login-page";
 				}
 		
@@ -296,7 +297,7 @@ return "admin-page";
 		   }
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}}
 
@@ -308,7 +309,7 @@ return "admin-page";
 		   }
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}}
 
@@ -325,13 +326,13 @@ return "admin-page";
 			model.addAttribute("student", student);
 
 		} else {
-			model.addAttribute("usermsg", "<script>alert('Student id not found')</script>");
+			model.addAttribute("error", " Roll No not found");
 		}
 		return "find-student-admin";
 		   }
 				else
 				{
-					model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+					model.addAttribute("error", "Please Login Again");
 					   return "login-page";
 				}
 	}
@@ -347,13 +348,13 @@ return "admin-page";
 			model.addAttribute("student", student);
 
 		} else {
-			model.addAttribute("usermsg", "<script>alert('Student id not found')</script>");
+			model.addAttribute("error", "Roll No not found");
 		}
 		return "find-student-admin";
 		   }
 				else
 				{
-					model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+					model.addAttribute("error", "Please Login Again");
 					   return "login-page";
 				}
 	}
@@ -372,14 +373,14 @@ return "admin-page";
 			model.addAttribute("teacher", employee);
 
 		} else {
-			model.addAttribute("usermsg", "<script>alert('Teacher id not found')</script>");
+			model.addAttribute("error", "Employee ID not found");
 		}
 		return "find-teacher-admin";
 
 	   }
 			else
 			{
-				model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+				model.addAttribute("error", "Please Login Again");
 				   return "login-page";
 			}
 	}
@@ -408,14 +409,14 @@ return "admin-page";
 			model.addAttribute("teacher", employee);
 
 		} else {
-			model.addAttribute("usermsg", "<script>alert('Teacher id not found')</script>");
+			model.addAttribute("error", "Employee ID not found");
 		}
 		return "find-teacher-admin";
 
 	   }
 			else
 			{
-				model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+				model.addAttribute("error", "Please Login Again");
 				   return "login-page";
 			}
 	}
@@ -429,7 +430,7 @@ return "admin-page";
 			model.addAttribute("employee", employee);
 		} else {
 
-			model.addAttribute("error", "<script>alert('User Doesn't exists')</script>");
+			model.addAttribute("errormsg", "User Doesn't exists");
 
 		}
 
@@ -438,7 +439,7 @@ return "admin-page";
 	   }
 			else
 			{
-				model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+				model.addAttribute("error", "Please Login Again");
 				   return "login-page";
 			}}
 	
@@ -447,6 +448,8 @@ return "admin-page";
 	public String updateTeacher(HttpServletRequest req, @ModelAttribute("employee") Employee theEmployee, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {
+			
+			try {
 		  Employee e=service.getEmployee(theEmployee.getId());
 		  
 		
@@ -460,20 +463,24 @@ return "admin-page";
 			theEmployee.setDateofJoining(e.getDateofJoining());
 			theEmployee.setAddress(a);
 			a.setEmployee(theEmployee);
-			model.addAttribute("usermsg", "<script>alert('Updated SuccessFully')</script>");
+			
 
 			if(service.update(theEmployee))
-			{model.addAttribute("usermsg", "<script>alert('Updated SuccessFully')</script>");}
+			{model.addAttribute("usermsg", "Updated SuccessFully");}
 			else
-			{model.addAttribute("usermsg", "<script>alert('failed to Update')</script>");}
+			{model.addAttribute("errormsg", "failed to Update");}
 
 		
-		return "admin-page";
+		return "update-teacherDetails-admin";
 		
-		   }
+		   }catch(Exception e) 
+			
+			
+			{model.addAttribute("errormsg", "Error in Update");  return "update-teacherDetails-admin";}
+			}
 		else
 		{
-			   model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			   model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 			   			
 		}
@@ -486,9 +493,9 @@ return "admin-page";
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {if (service.isEmployeeExists(theId)) {
 			if(service.deleteEmployee(theId))
-			{model.addAttribute("usermsg", "<script>alert('Deleted SuccessFully')</script>");}
+			{model.addAttribute("usermsg", "Deleted SuccessFully");}
 			else
-			{model.addAttribute("usermsg", "<script>alert('failed to Delete')</script>");}
+			{model.addAttribute("error", "failed to Delete");}
 			
 		
 			HttpSession s=req.getSession(false);
@@ -498,16 +505,16 @@ return "admin-page";
 		   }
 		   else {
 
-			model.addAttribute("error", "<script>alert('User Doesn't exists')</script>");
+			model.addAttribute("error", "User Doesn't exists");
 
 		}
 
-		return "admin-page";
+		return "redirect:../admin/getEmployees";
 
 	   }
 			else
 			{
-				model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+				model.addAttribute("error", "'Please Login Again");
 				   return "login-page";
 			}}
 
@@ -519,7 +526,7 @@ return "admin-page";
 			model.addAttribute("student", student);
 		} else {
 
-			model.addAttribute("error", "<script>alert('User Doesn't exists')</script>");
+			model.addAttribute("errormsg", "User Doesn't exists");
 
 		}
 		return "update-studentDetails-admin";
@@ -528,7 +535,7 @@ return "admin-page";
 	   }
 			else
 			{
-				model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+				model.addAttribute("error", "'Please Login Again");
 				   return "login-page";
 			}}
 	
@@ -540,7 +547,8 @@ return "admin-page";
 	public String updateStudent(HttpServletRequest req, @ModelAttribute("student") Student theStudent, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {
-		Student s=service.getStudent(theStudent.getId());
+		try {
+			 Student s=service.getStudent(theStudent.getId());
 	
 			StudentAddress a = new StudentAddress();
 			a.setStreetName(req.getParameter("streetName"));
@@ -554,17 +562,21 @@ return "admin-page";
 			a.setStudent(theStudent);
 		
 			if(service.update(theStudent))
-			{model.addAttribute("usermsg", "<script>alert('Updated SuccessFully')</script>");}
+			{model.addAttribute("usermsg", "Updated SuccessFully");}
 			else
-			{model.addAttribute("usermsg", "<script>alert('failed to Update')</script>");}
+			{model.addAttribute("errormsg", "failed to Update");}
 		
 		
 		
-		return "admin-page";
+		return "update-studentDetails-admin";
+		   }catch(Exception e) 
+		
+		
+		{model.addAttribute("errormsg", "Error in Update");  return "update-studentDetails-admin";}
 		   }
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}
 	}
@@ -579,9 +591,9 @@ return "admin-page";
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {if (service.isStudentExists(theId)) {
 			if(service.deleteStudent(theId))
-			{model.addAttribute("usermsg", "<script>alert('Deleted SuccessFully')</script>");}
+			{model.addAttribute("usermsg", "Deleted SuccessFully");}
 			else
-			{model.addAttribute("usermsg", "<script>alert('failed to Delete')</script>");}
+			{model.addAttribute("error", "failed to Delete");}
 			
 		
 			HttpSession s=req.getSession(false);
@@ -591,16 +603,16 @@ return "admin-page";
 		   } else {
 
 
-			model.addAttribute("error", "<script>alert('User Doesn't exists')</script>");
+			model.addAttribute("error", "User Doesn't exists");
 
 		}
 
-		return "admin-page";
+		return "redirect:../admin/getStudents";
 
 	   }
 			else
 			{
-				model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+				model.addAttribute("error", "Please Login Again");
 				   return "login-page";
 			}}
 

@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard- Teacher</title>
+        <title>Dashboard Teacher</title>
         <link href="../resources/static/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
@@ -56,7 +56,7 @@
                                 Update Details</a
                             ><a class="nav-link text-light" href="../employee/viewDetails"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                               veiw Details</a>
+                               View Details</a>
                              
                            
                             <div class="sb-sidenav-menu-heading text-light">Student</div>
@@ -121,8 +121,10 @@
 								
 									<div
 						class="col-md-2 "><input class="btn btn-success badge-pill" style="width:150px" type="submit" value="Find"></div>
-						<div
-						class="col-md-2 "></div>
+						
+						
+					<div	class="col-md-3 "><div style="color: red;font-size: 15px;margin-right: 15%  "><label id="warningLabel" name="warningLabel">${error}</label></div></div>
+								
 								</div></form:form>
 								<br/>
 								

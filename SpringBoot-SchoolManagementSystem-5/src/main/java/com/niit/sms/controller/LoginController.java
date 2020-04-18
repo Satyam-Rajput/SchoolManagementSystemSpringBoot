@@ -30,6 +30,7 @@ public class LoginController {
 	@Autowired
 	private AdminService adminService;
 
+	
 	@GetMapping("/loginForm")
 	public String showLoginForm(Model theModel) {
 		User theUser = new User();
@@ -47,13 +48,13 @@ public class LoginController {
 		User usr = userService.checkUser(theUser);
 		
 		if (usr == null) {
-			model.addAttribute("error", "<script>alert('Incorrect Password')</script>");
+			model.addAttribute("error", "Incorrect Password");
 			return "login-page";
 			
 		} else {
 			if (usr.getRole().equalsIgnoreCase("A")) {
 				HttpSession session=req.getSession();
-				session.setMaxInactiveInterval(120);
+				session.setMaxInactiveInterval(300);
 				session.setAttribute("admin", usr);
 				session.setAttribute("user", usr.getEmail().split("@")[0]);
 				return "redirect:../admin/adminPage";
@@ -63,7 +64,7 @@ public class LoginController {
 				
 				Employee theEmployee=adminService.getEmployee(usr.getUserId());
 				HttpSession session=req.getSession();
-				session.setMaxInactiveInterval(120);
+				session.setMaxInactiveInterval(300);
 				session.setAttribute("employee", theEmployee);
 				session.setAttribute("user", usr.getEmail().split("@")[0]);
 				return "redirect:../employee/teacherPage";
@@ -73,7 +74,7 @@ public class LoginController {
 				Student theStudent=adminService.getStudent(usr.getUserId());
 				
 				HttpSession session=req.getSession();
-				session.setMaxInactiveInterval(120);
+				session.setMaxInactiveInterval(300);
 				session.setAttribute("user", usr.getEmail().split("@")[0]);
 				session.setAttribute("student", theStudent);
 				
@@ -86,7 +87,7 @@ public class LoginController {
 		else
 		{
 			
-			model.addAttribute("error", "<script>alert('User Not Found')</script>");
+			model.addAttribute("error", "User Not Found");
 			
 			
 		}

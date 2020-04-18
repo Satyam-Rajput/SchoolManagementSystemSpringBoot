@@ -40,7 +40,9 @@ public class EmployeeController {
 	
 	public String teacherDashboard()
 	{
+		
 	return "teacher-page";	
+	
 		
 	}
 	
@@ -51,14 +53,14 @@ public class EmployeeController {
 		List<Student> students = service.listAllStudents();
 		model.addAttribute("students", students);
 		if(students.size()==0)
-			model.addAttribute("error", "<script>alert('No record found')</script>");
+			model.addAttribute("error", "No record found");
 		return "listStudents-teacher";
 
 		   }
 	
 				else
 				{
-					model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+					model.addAttribute("error", "Please Login Again");
 					   return "login-page";
 				}
 		   }
@@ -75,14 +77,14 @@ public class EmployeeController {
 				return "redirect:../employee/getStudents";
 		List<Student> students = service.filterStudentByClass(studentClass);
 		if(students.size()==0)
-			model.addAttribute("error", "<script>alert('No record found')</script>");
+			model.addAttribute("error", "No record found");
 		model.addAttribute("students", students);
 		return "listStudents-teacher";
 
 		   }
 				else
 				{
-					model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+					model.addAttribute("error", "Please Login Again");
 					   return "login-page";
 				}
 		
@@ -100,7 +102,7 @@ public class EmployeeController {
 		
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}}
 
@@ -117,13 +119,13 @@ public class EmployeeController {
 			
 
 		} else {
-			model.addAttribute("usermsg", "<script>alert('Student id not found')</script>");
+			model.addAttribute("usermsg", "Student id not found");
 		}
 		return "getStudent-teacher";
 		   }
 				else
 				{
-					model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+					model.addAttribute("error", "Please Login Again");
 					   return "login-page";
 				}
 	}
@@ -144,13 +146,13 @@ public class EmployeeController {
 			
 
 		} else {
-			model.addAttribute("usermsg", "<script>alert('Student id not found')</script>");
+			model.addAttribute("usermsg", "Student id not found");
 		}
 		return "getStudent-teacher";
 		   }
 				else
 				{
-					model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+					model.addAttribute("error", "Please Login Again");
 					   return "login-page";
 				}
 	}
@@ -167,7 +169,7 @@ public class EmployeeController {
 		   }
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}}
 	
@@ -184,25 +186,28 @@ public class EmployeeController {
 		if (service.isStudentExists(theId)) {
 			Student student = service.getStudent(theId);
 			Marks marks=empService.getMarks(theId);
-			model.addAttribute("student", student);
-			model.addAttribute("marks", marks);
 			
 			
-	if(marks==null)
+	if(marks!=null)
 	{
-		model.addAttribute("error", "<script>alert('Marks Not Uploaded yet')</script>");
+		model.addAttribute("student", student);
+		model.addAttribute("marks", marks);
+	}
+	else
+	{
+		model.addAttribute("error", "Marks Not Uploaded yet");
 		return "teacher-page";
 	}
 
 		} else {
-			model.addAttribute("usermsg", "<script>alert('Student id not found')</script>");
+			model.addAttribute("usermsg", "Student id not found");
 			return "teacher-page";
 		}
 		return "studentMarks-teacher";
 		   }
 				else
 				{
-					model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+					model.addAttribute("error", "Please Login Again");
 					   return "login-page";
 				}
 	}
@@ -227,7 +232,7 @@ public class EmployeeController {
 	   }
 			else
 			{
-				model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+				model.addAttribute("error", "Please Login Again");
 				   return "login-page";
 			}}
 	
@@ -235,7 +240,7 @@ public class EmployeeController {
 	public String updateTeacherDetails(HttpServletRequest req, @ModelAttribute("employee") Employee theEmployee, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("employee")!=null)
 		   {
-		
+		try {
 		Employee e=(Employee)req.getSession(false).getAttribute("employee");
 
 			EmployeeAddress a = new EmployeeAddress();
@@ -248,25 +253,26 @@ public class EmployeeController {
 			theEmployee.setDateofJoining(e.getDateofJoining());
 			theEmployee.setAddress(a);
 			a.setEmployee(theEmployee);
-			model.addAttribute("usermsg", "<script>alert('Details Updated SuccessFully')</script>");
+			
 
 			if(service.update(theEmployee))
-			{model.addAttribute("usermsg", "<script>alert('Updated SuccessFully')</script>");
+			{model.addAttribute("usermsg", "Updated SuccessFully");
 			
 			HttpSession s=req.getSession(false);
 			s.setAttribute("employee", theEmployee);
 			
 			}
 			else
-			{model.addAttribute("usermsg", "<script>alert('failed to Updated')</script>");}
+			{model.addAttribute("errormsg", "failed to Updated");}
 			
 		
-		return "teacher-page";
+		return "updateTeacherInformation-teacher";
 		
+		   }catch(Exception e) {  model.addAttribute("errormsg", "Error in Updating Details"); return "updateTeacherInformation-teacher"; }
 		   }
 		else
 		{
-			   model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			   model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 			   			
 		}
@@ -287,7 +293,7 @@ public class EmployeeController {
 		
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}}
 	
@@ -306,7 +312,7 @@ public class EmployeeController {
 		
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}}
 	
@@ -317,30 +323,30 @@ public class EmployeeController {
 
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("employee")!=null)
 		   {	
-			model.addAttribute("usermsg", "<script>alert('Upload Successful')</script>");
+			
 		
 			if(service.isStudentExists(marks.getStudentId())) {
 			
 		if(empService.getMarks(marks.getStudentId())!=null)
 			empService.delete(marks.getStudentId());
 		if(empService.uploadMarks(marks))
-		{model.addAttribute("usermsg", "<script>alert('Uploaded SuccessFully')</script>");
+		{model.addAttribute("usermsg", "Uploaded SuccessFully");
 		
 
 		}
 		else
-		{model.addAttribute("usermsg", "<script>alert('failed to Upload')</script>");}}else
+		{model.addAttribute("error", "failed to Upload");}}else
 		{
 			
-			model.addAttribute("usermsg", "<script>alert('Student doesn't Exists')</script>");	
+			model.addAttribute("error", "Student doesn't Exists");	
 		}
 			
 		
-		return "teacher-page";
+		return "uploadMarks-teacher";
 		   }
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}
 			
@@ -359,7 +365,7 @@ public class EmployeeController {
 		   }
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}}
 	
@@ -381,28 +387,28 @@ public class EmployeeController {
 		u.setPassword(req.getParameter("newPassword"));
 		if(service.update(u))
 			
-		{model.addAttribute("usermsg", "<script>alert('Changed SuccessFully')</script>");
+		{model.addAttribute("usermsg", "Changed SuccessFully");
 		
 		
 		
 		}
 		else
-		{model.addAttribute("usermsg", "<script>alert('failed to Change Password')</script>");}
+		{model.addAttribute("errormsg", "failed to Change Password");}
 		HttpSession s=req.getSession(false);
 		s.setAttribute("employee", u);
 		
 		
-		model.addAttribute("usermsg", "<script>alert('Password changed successfully')</script>");
-		return "teacher-page";
+		model.addAttribute("usermsg", "Password changed successfully");
+		return "changePassword-teacher";
 		}
 		else
 		{
-			 model.addAttribute("error", "<script>alert('Incorrect Password')</script>");
+			 model.addAttribute("error", "Incorrect Password");
 			
 		}
 		}else
 		{
-			 model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			 model.addAttribute("error", "Please Login Again");
 			
 			   
 			
@@ -411,7 +417,7 @@ public class EmployeeController {
 		}
 		else
 		{
-			 model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			 model.addAttribute("error", "Please Login Again");
 			
 			   
 			

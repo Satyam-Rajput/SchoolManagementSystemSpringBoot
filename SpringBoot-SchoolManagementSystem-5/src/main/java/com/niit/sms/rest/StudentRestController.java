@@ -23,7 +23,7 @@ import com.niit.sms.service.LoginService;
 @CrossOrigin(origins="*")  
 @RequestMapping(value="/api/student") 
 public class StudentRestController {
-
+/*
 	@Autowired
 	private AdminService service;
 	
@@ -115,5 +115,5 @@ public StudentDetails convertToStudentDetails(long theId)
 		
 		return service.update(s);
 	}
-	
+	*/
 }

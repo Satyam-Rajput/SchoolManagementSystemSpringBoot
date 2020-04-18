@@ -16,23 +16,26 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     
      <script>
-   
-   function checkPassword()
-   {
-	  
-	   var newpass=document.getElementById("newPassword").value
-	   var conpass=document.getElementById("confirmPassword").value;
-	   
-	   if(newpass!=conpass)
-		   {
-		  
-		  document.getElementById("warningLabel").innerHTML="Password doesn't match";
-		   }
-	   else
-		   {
-		   document.getElementById("warningLabel").innerHTML=" ";
-		   }
-   }
+
+     
+     function validate()
+     {
+  	  
+  	   var newpass=document.getElementById("newPassword").value
+  	   var conpass=document.getElementById("confirmPassword").value;
+  	   
+  	   if(newpass!=conpass)
+  		   {
+  		 
+  		  document.getElementById("warningLabel").innerHTML="Password doesn't match";
+  		  return false;
+  		   }
+  	   else
+  		   {
+  		   document.getElementById("warningLabel").innerHTML=" ";
+  		   return true;
+  		   }
+     }
    
    </script>
     </head>
@@ -159,7 +162,7 @@
                 -->
                 
                 	<div class="card bg-success" style="width: 40%;margin-left: 29% ; margin-top: 9%;border-radius: 10px">
-  <div class="card-header text-center text-light">
+  <div class="card-header text-center text-light font-weight-bolder">
    Change Password
   </div>
   <div class="card-body bg-light" style="border-radius: 15px">
@@ -169,8 +172,8 @@
 					
 
 
-						<div class="row"><div class="col-sm-1  text-center" ></div>
-					<div class="col-sm-4  text-center" >
+						<div class="row"><div class="col-sm-1  text-left" ></div>
+					<div class="col-sm-4  text-left" style="margin-left: 2%">
 						<p class="text-dark"><label for="password">Password</label></p>
 </div>
 
@@ -186,7 +189,7 @@
 
 
 <div class="row"><div class="col-sm-1  text-center" ></div>
-					<div class="col-sm-4  text-center" >
+					<div class="col-sm-4  text-left" style="margin-left: 2%" >
 						<p class="text-dark"><label for="password">New Password</label></p>
 </div>
 
@@ -204,7 +207,7 @@
 
 
 <div class="row"><div class="col-sm-1  text-center" ></div>
-					<div class="col-sm-4  text-center" >
+					<div class="col-sm-4  text-left" style="margin-left: 2%">
 						<p class="text-dark"><label for="password"> Confirm Password</label></p>
 </div>
 
@@ -212,7 +215,7 @@
 <!--  <input id="password" name="password" placeholder="Enter password" required tabindex="2" type="password">-->
 
 <div class="input-group mb-3">
-  <input  type="password" id="confirmPassword" class="form-control" tabindex="3"  name="confirmPassword" onblur="checkPassword()" required="required" placeholder="Enter password" aria-label="password" aria-describedby="basic-addon2">
+  <input  type="password" id="confirmPassword" class="form-control" tabindex="3"  name="confirmPassword" onblur="validate()" required="required" placeholder="Enter password" aria-label="password" aria-describedby="basic-addon2">
   
 </div>
 
@@ -221,7 +224,7 @@
 
 
 <div class="row">
-<div class="col-sm-12 text-center"><div style="color: red;font-size: 15px; ">${error}</div></div></div>
+<div class="col-sm-12 text-center"><div style="color: red;font-size: 15px;font-style: italic;  "><label id="warningLabel" name="warningLabel">${error} ${usermsg}</label></div></div></div>
 						
 						<div class="row"><div class="col-sm-12 text-center text-dark"><input tabindex="4" onclick="return validate()" type="submit" value="Change Password" class="btn btn-outline-success my-2 my-sm-0  text-dark">
 						</div></div>

@@ -42,7 +42,7 @@
     <form class="form-inline my-2 my-lg-0">
     <div>
     
-    <a href=" ../user/loginForm"  class="btn btn-outline-secondary my-2 my-sm-0  text-light"> Login </a>
+    <a href=" ../user/loginForm"  class="btn btn-outline-success my-2 my-sm-0  text-light"> Login </a>
 
     </div>
       </form>

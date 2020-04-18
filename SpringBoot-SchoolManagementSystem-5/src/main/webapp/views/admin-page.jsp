@@ -37,8 +37,7 @@
                         <a class="dropdown-item" href="../user/logout">Logout</a>
                     </div>
                 </li>
-                ${usermsg }
-                ${error }
+                
             </ul>
         </nav>
         <div id="layoutSidenav">
@@ -55,7 +54,7 @@
                             
                               <a class="nav-link text-light" href="../admin/newTeacher"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                                Add Teachers</a
+                                Register Teachers</a
                             ><a class="nav-link text-light" href="../admin/getEmployees"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Teacher Details</a>
@@ -67,7 +66,7 @@
                             
                               <a class="nav-link text-light" href="../admin/newStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                                Add Students</a
+                                Register Students</a
                             ><a class="nav-link text-light" href="../admin/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Student Details</a>
@@ -85,19 +84,10 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                  <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-6 my-3">
-                <div class=" bg-light px-3 py-3">
-                  <h4 class="mb-2">Total Number of Teachers    :<%out.println(request.getSession(false).getAttribute("teacherCount")); %></h4>
                  
-              </div></div>
-               <div class="col-md-6 my-3">
-                <div class=" sb-sidenav-dark px-3 py-3">
-                  <h4 class="mb-2">Total Number of Students    :<%out.println(request.getSession(false).getAttribute("studentCount")); %></h4>
+                 <h1>${usermsg} ${error}</h1>
                  
-              </div></div>
-          </div>
+                 
                 </main>
                 <footer class="py-4 bg-dark mt-auto">
                     <div class="container-fluid">

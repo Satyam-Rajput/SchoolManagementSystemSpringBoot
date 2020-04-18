@@ -15,7 +15,7 @@
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
-        <body class="sb-nav-fixed bg-white">
+          <body class="sb-nav-fixed bg-white">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
             <a class="navbar-brand" href="../admin/adminPage">Admin Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
@@ -37,8 +37,7 @@
                         <a class="dropdown-item" href="../user/logout">Logout</a>
                     </div>
                 </li>
-                ${usermsg }
-                ${error }
+              
             </ul>
         </nav>
         <div id="layoutSidenav">
@@ -55,7 +54,7 @@
                             
                               <a class="nav-link text-light" href="../admin/newTeacher"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                                Add Teachers</a
+                                Register Teachers</a
                             ><a class="nav-link text-light" href="../admin/getEmployees"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Teacher Details</a>
@@ -67,7 +66,7 @@
                             
                               <a class="nav-link text-light" href="../admin/newStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                                Add Students</a
+                                Register Students</a
                             ><a class="nav-link text-light" href="../admin/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Student Details</a>
@@ -79,7 +78,7 @@
                     </div>
             <!--         <div class=" py-2 sb-sidenav-footer bg-dark">
                         <div class="small text-light">Logged in as:</div>
-                  <p class="text-light">  <%out.println(request.getSession(false).getAttribute("user")); %>
+                  <p class="text-light">  
                    </p> </div>--> 
                 </nav>
             </div>
@@ -88,15 +87,19 @@
               <br/>
              
              <div class="card" style="width: 90%;margin-left: 5%;">
-  <div class="card-header text-light text-center bg-success">
+  <div class="card-header text-light text-center bg-success font-weight-bolder">
    Student Details
+   <br/>
+   <div class="row"><div class="col-sm-12 text-right"><div style="color: red;font-size: 15px;margin-right: 15%  "><label id="warningLabel" name="warningLabel">${error}</label></div></div>
+
+</div>
   </div>
   <div class="card-body" >
   <form:form id="filterform" action="../admin/filterStudent" cssClass="form-horizontal"
 						method="post" >
 						
-					<div class="row"><div class="col-sm-2 text-center"></div> <div class="col-sm-2 text-center">
-									<p class="text-dark">
+					<div class="row"><div class="col-sm-2 text-right"></div> <div class="col-sm-2 text-right">
+									<p class="text-dark font-weight-bold">
 										<label for="studentClass"> Class :</label>
 									</p>
 								</div>

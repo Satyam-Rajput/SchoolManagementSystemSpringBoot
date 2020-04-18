@@ -35,6 +35,7 @@ public class StudentController {
 	private EmployeeService eservice;
 	
 @GetMapping("/studentPage")
+
 	
 	public String studentDashboard()
 	{
@@ -55,7 +56,7 @@ public class StudentController {
 		   }
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}}
 	
@@ -73,14 +74,14 @@ public class StudentController {
 		
 		if(marks==null)
 		{
-			model.addAttribute("error", "<script>alert('Marks Not Uploaded yet')</script>");
+			model.addAttribute("error", "Marks Not Uploaded yet");
 			return "student-page";
 		}
 		return "viewMarks-student";
 		   }
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}}
 	
@@ -103,7 +104,7 @@ public class StudentController {
 	   }
 			else
 			{
-				model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+				model.addAttribute("error", "Please Login Again");
 				   return "login-page";
 			}}
 	
@@ -115,7 +116,9 @@ public class StudentController {
 	public String updateStudentDetails(HttpServletRequest req, @ModelAttribute("student") Student theStudent, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("student")!=null)
 		   {
-		 Student s=(Student) req.getSession(false).getAttribute("student");
+		
+			try {
+			Student s=(Student) req.getSession(false).getAttribute("student");
 	
 			StudentAddress a = new StudentAddress();
 			a.setStreetName(req.getParameter("streetName"));
@@ -129,24 +132,27 @@ public class StudentController {
 			theStudent.setDateofJoining(s.getDateofJoining());
 			theStudent.setAddress(a);
 			a.setStudent(theStudent);
-			model.addAttribute("usermsg", "<script>alert('Updated SuccessFully')</script>");
+			
 			if(service.update(theStudent))
-	{model.addAttribute("usermsg", "<script>alert('Updated SuccessFully')</script>");
+	{model.addAttribute("usermsg", "Updated SuccessFully");req.getSession(false).setAttribute("student",theStudent);
 			
 		
 			
 			}
 			else
-			{model.addAttribute("usermsg", "<script>alert('failed to Update')</script>");}
+			{model.addAttribute("errormsg", "failed to Update");}
 		
-			req.getSession(false).setAttribute("student",theStudent);
+			
 		
 		
-		return "student-page";
+		return "updateDetails-student";
+		   }catch(Exception e) {model.addAttribute("errormsg", "Error in Updating Details");return "updateDetails-student";}
+			
+			
 		   }
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}
 	}
@@ -164,7 +170,7 @@ public class StudentController {
 		   }
 		else
 		{
-			model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			model.addAttribute("error", "Please Login Again");
 			   return "login-page";
 		}}
 	
@@ -187,30 +193,30 @@ public class StudentController {
 		
 		u.setPassword(req.getParameter("newPassword"));
 		if(service.update(u))
-		{model.addAttribute("usermsg", "<script>alert('Password Changed SuccessFully')</script>");
+		{model.addAttribute("usermsg", "Password Changed SuccessFully");
 		
 		
 		
 		}
 		else
-		{model.addAttribute("usermsg", "<script>alert('failed to change Password')</script>");}
+		{model.addAttribute("error", "failed to change Password");}
 		HttpSession s=req.getSession(false);
 		s.setAttribute("student", u);
 		
 		
-		model.addAttribute("usermsg", "<script>alert('Password changed successfully')</script>");
-		return "student-page";
+		
+		return "changePassword-student";
 		}
 		else
 		{
-			 model.addAttribute("error", "<script>alert('Incorrect Password')</script>");
+			 model.addAttribute("error", "Incorrect Password");
 			
 		}
 		}
 		
 		else
 		{
-			 model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			 model.addAttribute("error", "Please Login Again");
 			
 			   
 			
@@ -219,7 +225,7 @@ public class StudentController {
 		}
 		else
 		{
-			 model.addAttribute("error", "<script>alert('Please Login Again')</script>");
+			 model.addAttribute("error", "Please Login Again");
 			
 			   
 			

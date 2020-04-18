@@ -10,12 +10,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard- Teacher</title>
+        <title>Dashboard Teacher</title>
         <link href="../resources/static/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
-     <body class="sb-nav-fixed bg-light">
+       <body class="sb-nav-fixed bg-light">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
             <a class="navbar-brand text-light" href="../employee/teacherPage">Teacher Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
@@ -56,7 +56,7 @@
                                 Update Details</a
                             ><a class="nav-link text-light" href="../employee/viewDetails"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                               veiw Details</a>
+                               View Details</a>
                              
                            
                             <div class="sb-sidenav-menu-heading text-light">Student</div>
@@ -92,7 +92,7 @@
                 
                  <div class="card " style="width:80%;margin-left:10%;margin-top:1%;">
   <div class="card-header bg-success text-light text-center font-weight-bold">
-  ${student.firstName}&nbsp;${student.lastName}'s Details
+  Student Details
   </div>
   <br/>
   <div class="card-body">
@@ -124,13 +124,17 @@
 								
 								
 								
-							 <c:if test="${student!=null }">	
+							 <c:if test="${marks!=null }">	
   	
   
   <br/>
 
   	
-
+<div class="row text-left">
+<div class="col-md-3"></div>
+<div class="col-md-3 text-dark font-weight-bold">Name :</div>
+<div class="col-md-3 text-dark">${student.firstName}&nbsp;${student.lastName}</div>
+<div class="col-md-3"></div></div><br/>
 
 
 <div class="row text-left">

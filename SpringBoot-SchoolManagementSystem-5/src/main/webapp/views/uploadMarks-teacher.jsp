@@ -10,12 +10,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard- Teacher</title>
+        <title>Dashboard Teacher</title>
         <link href="../resources/static/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
-        <body class="sb-nav-fixed bg-light">
+         <body class="sb-nav-fixed bg-light">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
             <a class="navbar-brand text-light" href="../employee/teacherPage">Teacher Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
@@ -56,7 +56,7 @@
                                 Update Details</a
                             ><a class="nav-link text-light" href="../employee/viewDetails"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                               veiw Details</a>
+                               View Details</a>
                              
                            
                             <div class="sb-sidenav-menu-heading text-light">Student</div>
@@ -155,7 +155,7 @@
 	</div>
               -->
                 <div class="card bg-success" style="width: 50%;margin-left: 25% ; margin-top: 5%;border-radius: 10px">
-  <div class="card-header text-center text-light">
+  <div class="card-header text-center text-light font-weight-bolder">
     Upload Marks
   </div>
   <div class="card-body bg-light" style="border-radius: 15px">
@@ -312,7 +312,7 @@
 
 	
 <div class="row">
-<div class="col-sm-12 text-center"><div style="color: red;font-size: 15px; ">${error}</div></div></div>
+<div class="col-sm-12 text-center"><div style="color: red;font-size: 15px;font-style: italic; ">${error} ${usermsg}</div></div></div>
 
 								
 						<div class="row"><div class="col-sm-12 text-center text-dark"><input tabindex="7" onclick="return validate()" type="submit" value="Upload" class="btn btn-outline-success my-2 my-sm-0  text-dark">

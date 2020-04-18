@@ -16,7 +16,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     
-       <body class="sb-nav-fixed bg-white">
+        <body class="sb-nav-fixed bg-white">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
             <a class="navbar-brand" href="../admin/adminPage">Admin Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
@@ -38,8 +38,7 @@
                         <a class="dropdown-item" href="../user/logout">Logout</a>
                     </div>
                 </li>
-                ${usermsg }
-                ${error }
+              
             </ul>
         </nav>
         <div id="layoutSidenav">
@@ -56,7 +55,7 @@
                             
                               <a class="nav-link text-light" href="../admin/newTeacher"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                                Add Teachers</a
+                                Register Teachers</a
                             ><a class="nav-link text-light" href="../admin/getEmployees"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Teacher Details</a>
@@ -68,7 +67,7 @@
                             
                               <a class="nav-link text-light" href="../admin/newStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                                Add Students</a
+                                Register Students</a
                             ><a class="nav-link text-light" href="../admin/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 Display Student Details</a>
@@ -121,11 +120,14 @@
 									<div
 						class="col-md-2 "><input class="btn btn-success badge-pill" style="width:150px" type="submit" value="Find"></div>
 						<div
-						class="col-md-2 "></div>
+						class="col-md-2 "><div style="color: red;font-size: 15px;margin-right: 15%  "><label id="warningLabel" name="warningLabel">${error} ${usermsg }</label></div></div>
 								</div></form:form>
 								<br/>
 								
 								
+
+
+<br/>
 								
 							 <c:if test="${student!=null }">	
   	<c:url var="updateLink" value="../admin/updateStudent">
