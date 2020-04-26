@@ -14,10 +14,62 @@
         <link href="../resources/static/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+  
+      <style>
+    
+
+/* Add a gray background color with some padding */
+
+
+/* Header/Blog Title */
+.header {
+ 
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: center;
+  width: 85%;
+  border: 10px;
+}
+
+/* Fake image */
+
+
+/* Add a card effect for articles */
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+   margin-left: 100px;
+   
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+    </style>
     </head>
-      <body class="sb-nav-fixed bg-light">
+      <body class="bg-light" style="background-repeat: no-repeat;" background="<c:url value="/resources/static/images/teacher.jpg"/>"/>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
-            <a class="navbar-brand text-light" href="../employee/teacherPage">Teacher Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+            <a class="navbar-brand text-light" href="../employee/teacherPage">
+            <img src="<c:url value="/resources/static/images/logo1.jpg"/>" alt="Logo" style="width:60px; "></a>
+            
+            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -53,28 +105,28 @@
                             
                               <a class="nav-link text-light" href="../employee/updateDetails"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>
-                                Update Details</a
+                                Update Personal Details</a
                             ><a class="nav-link text-light" href="../employee/viewDetails"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                               View Details</a>
+                               View Personal Details</a>
                              
                            
                             <div class="sb-sidenav-menu-heading text-light">Student</div>
                             
                               <a class="nav-link text-light" href="../employee/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                                Display Student Details</a>
+                                Display Students List</a>
                                 <a class="nav-link text-light" href="../employee/findStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
-                                Find Student Details</a>
+                                Find Student </a>
                                 
                                 <a class="nav-link text-light" href="../employee/uploadMarksPage"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-upload" aria-hidden="true"></i></div>
-                               Upload Student Marks</a>
+                               Upload Student's Marks</a>
                                
                                 <a class="nav-link text-light" href="../employee/viewMarksPage"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-list" aria-hidden="true"></i></div>
-                              View Student Marks</a>
+                              View Student's Marks</a>
                                
                         </div>
                     </div>
@@ -90,10 +142,34 @@
                 
                 
                 
-                <h1>${error} ${usermsg }</h1>
+              
+                 <div class="header" style="  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+   padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: white;">
+  <h2>Important Notice</h2>
+</div>
+<div class="row ">
+  <div class="leftcolumn" >
+    <div class="card" >
+      <h2>Covid-19 update</h2>
+      
+      <p><b>notice:</b></p><p>Due to the spread of covid-19,All School have been shut down until further notice by the HRD Ministry.
+</div>   
                 
                 
                 
+                
+                 
+            
+              <div class="card">
+                <h2> Updates on Online Classes</h2>
+                
+                <p><b>notice:</b></p><p>Be Ready to take online classes from Date 05/05/2020. </p>
+          </div></div></div>
                 
                 
                 </main>

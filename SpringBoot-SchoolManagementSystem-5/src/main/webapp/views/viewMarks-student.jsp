@@ -16,9 +16,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
       
-            <body class="sb-nav-fixed bg-light">
+               <body class="sb-nav-fixed bg-light" background="<c:url value="/resources/static/images/student.jpg"/>"/>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
-            <a class="navbar-brand text-light" href="../student/StudentPage">Student Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+            <a class="navbar-brand text-light" href="../student/StudentPage"><img src="<c:url value="/resources/static/images/logo1.jpg"/>" alt="Logo" style="width:60px; "></a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -54,7 +54,7 @@
                             
                               <a class="nav-link text-light" href="../student/updateDetails"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>
-                                Update Details</a
+                                Update Personal Details</a
                             ><a class="nav-link text-light" href="../student/viewDetails"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                View Details</a>
@@ -77,7 +77,7 @@
                 
                 <div class="card " style="width:80%;margin-left:10%;margin-top:1%;">
   <div class="card-header bg-success text-light text-center font-weight-bold">
-   ${student.firstName}&nbsp;${student.lastName}'s Details
+   ${student.firstName}&nbsp;${student.lastName}'s Marks
   </div>
   <br/>
   <div class="card-body">
@@ -96,14 +96,17 @@
 <div class="col-md-3 text-dark">${student.studentClass}</div>
 <div class="col-md-3"></div></div><br/>
 
+
+<div class="row">
+<div
+						class="col-md-12 text-center "><div style="color: red;font-size: 15px; "><label id="warningLabel" name="warningLabel">${error} ${usermsg }</label></div></div>
+				</div>	
+<c:if test="${marks!=null }">
 <div class="row text-left">
 <div class="col-md-3"></div>
-<div class="col-md-3 text-dark font-weight-bold">Contact No :</div>
-<div class="col-md-3 text-dark">${student.phoneNumber}</div>
-<div class="col-md-3"></div></div><br/>
-
-
-
+<div class="col-md-3 text-dark font-weight-bold">Attendence :</div>
+<div class="col-md-3 text-dark">${marks.attendence}%</div>
+<div class="col-md-3"></div></div><br/>	
 <div class="row text-left">
 <div class="col-md-3"></div>
 <div class="col-md-3 text-dark font-weight-bold">Marks in English :</div>
@@ -143,7 +146,7 @@
 <div class="col-md-3 text-dark">${marks.percentage}%</div>
 <div class="col-md-3"></div></div><br/>
 
-								
+</c:if>								
    </div>
 </div>
                 

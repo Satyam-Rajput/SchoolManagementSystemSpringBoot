@@ -116,6 +116,18 @@ service.save(u);
 verify(repo,times(1)).save(u);
 }
 
+@Test
+public void isUserTest()
+{
+	when(repo.existsByEmail("satyam@gmail.com")).thenReturn(false);
+assertEquals(service.isUser("satyam@gmail.com"),false);	
+}
 
-
+@Test
+public void deleteTest()
+{
+assertEquals(service.delete(2l), true);
+verify(repo,times(1)).deleteById(2l);
+	
+	}
 }

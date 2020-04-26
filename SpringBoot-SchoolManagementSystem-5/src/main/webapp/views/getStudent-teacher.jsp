@@ -15,9 +15,9 @@
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
-      <body class="sb-nav-fixed bg-light">
+     <body class="bg-light" style="background-repeat: no-repeat;" background="<c:url value="/resources/static/images/teacher.jpg"/>"/>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
-            <a class="navbar-brand text-light" href="../employee/teacherPage">Teacher Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+            <a class="navbar-brand text-light" href="../employee/teacherPage"><img src="<c:url value="/resources/static/images/logo1.jpg"/>" alt="Logo" style="width:60px; "></a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -53,28 +53,28 @@
                             
                               <a class="nav-link text-light" href="../employee/updateDetails"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>
-                                Update Details</a
+                                Update Personal Details</a
                             ><a class="nav-link text-light" href="../employee/viewDetails"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                               View Details</a>
+                               View Personal Details</a>
                              
                            
                             <div class="sb-sidenav-menu-heading text-light">Student</div>
                             
                               <a class="nav-link text-light" href="../employee/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                                Display Student Details</a>
+                                Display Students List</a>
                                 <a class="nav-link text-light" href="../employee/findStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
-                                Find Student Details</a>
+                                Find Student </a>
                                 
                                 <a class="nav-link text-light" href="../employee/uploadMarksPage"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-upload" aria-hidden="true"></i></div>
-                               Upload Student Marks</a>
+                               Upload Student's Marks</a>
                                
                                 <a class="nav-link text-light" href="../employee/viewMarksPage"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-list" aria-hidden="true"></i></div>
-                              View Student Marks</a>
+                              View Student's Marks</a>
                                
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                
                  <div class="card " style="width:80%;margin-left:10%;margin-top:1%;">
   <div class="card-header bg-success text-light text-center font-weight-bold">
-    View Student Details
+    View Student's Personal Details
   </div>
   <br/>
   <div class="card-body">
@@ -123,7 +123,7 @@
 						class="col-md-2 "><input class="btn btn-success badge-pill" style="width:150px" type="submit" value="Find"></div>
 						
 						
-					<div	class="col-md-3 "><div style="color: red;font-size: 15px;margin-right: 15%  "><label id="warningLabel" name="warningLabel">${error}</label></div></div>
+					<div	class="col-md-3 "><div style="color: red;font-size: 15px;margin-right: 15%  "><label id="warningLabel" name="warningLabel">${error}${usermsg}${errormsg}</label></div></div>
 								
 								</div></form:form>
 								<br/>

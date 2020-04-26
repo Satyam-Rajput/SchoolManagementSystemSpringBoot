@@ -111,7 +111,7 @@ public class EmployeeControllerTest {
 		when(req.getSession(false)).thenReturn(ses);
 		when(req.getSession(false).getAttribute("employee")).thenReturn(e);
 		when(req.getParameter("studentClass")).thenReturn("All");
-		assertEquals(controller.filterStudent(req, modelMap), "redirect:../employee/getStudents");
+		assertEquals(controller.filterStudents(req, modelMap), "redirect:../employee/getStudents");
 
 	}
 
@@ -124,7 +124,7 @@ public class EmployeeControllerTest {
 		when(req.getSession(false).getAttribute("employee")).thenReturn(e);
 		when(req.getParameter("studentClass")).thenReturn("Intermediate");
 		when(aservice.filterStudentByClass("Intermediate")).thenReturn(list);
-		assertEquals(controller.filterStudent(req, modelMap), "listStudents-teacher");
+		assertEquals(controller.filterStudents(req, modelMap), "listStudents-teacher");
 
 		verify(aservice, times(1)).filterStudentByClass("Intermediate");
 
@@ -139,7 +139,7 @@ public class EmployeeControllerTest {
 		when(req.getSession(false).getAttribute("employee")).thenReturn(e);
 		when(req.getParameter("studentClass")).thenReturn("Intermediate");
 		when(aservice.filterStudentByClass("Intermediate")).thenReturn(list);
-		assertEquals(controller.filterStudent(req, modelMap), "listStudents-teacher");
+		assertEquals(controller.filterStudents(req, modelMap), "listStudents-teacher");
 
 		verify(aservice, times(1)).filterStudentByClass("Intermediate");
 
@@ -151,7 +151,7 @@ public class EmployeeControllerTest {
 		when(req.getSession(false)).thenReturn(ses);
 		when(req.getSession(false).getAttribute("employee")).thenReturn(null);
 
-		assertEquals(controller.filterStudent(req, modelMap), "login-page");
+		assertEquals(controller.filterStudents(req, modelMap), "login-page");
 
 	}
 
@@ -184,7 +184,7 @@ public class EmployeeControllerTest {
 		when(aservice.isStudentExists(2)).thenReturn(true);
 		when(aservice.getStudent(2)).thenReturn(new Student());
 		when(eservice.getMarks(2)).thenReturn(new Marks());
-		assertEquals(controller.getStudent(req, model), "getStudent-teacher");
+		assertEquals(controller.searchStudent(req, model), "getStudent-teacher");
 
 		verify(aservice, times(1)).isStudentExists(2);
 		verify(aservice, times(1)).getStudent(2);
@@ -200,7 +200,7 @@ public class EmployeeControllerTest {
 		when(req.getParameter("studentId")).thenReturn("2");
 		when(aservice.isStudentExists(2)).thenReturn(false);
 
-		assertEquals(controller.getStudent(req, model), "getStudent-teacher");
+		assertEquals(controller.searchStudent(req, model), "getStudent-teacher");
 		verify(aservice, times(1)).isStudentExists(2);
 	}
 
@@ -210,10 +210,64 @@ public class EmployeeControllerTest {
 		when(req.getSession(false)).thenReturn(ses);
 		when(req.getSession(false).getAttribute("employee")).thenReturn(null);
 
-		assertEquals(controller.getStudent(req, model), "login-page");
+		assertEquals(controller.searchStudent(req, model), "login-page");
 
 	}
 
+	
+	
+	
+	
+	@Test
+	public void viewStudentTest() {
+
+		when(req.getSession(false)).thenReturn(ses);
+		when(req.getSession(false).getAttribute("employee")).thenReturn(new Employee());
+		
+		when(aservice.isStudentExists(2)).thenReturn(true);
+		when(aservice.getStudent(2)).thenReturn(new Student());
+		when(eservice.getMarks(2)).thenReturn(new Marks());
+		assertEquals(controller.viewStudentDetails(req,2, model), "getStudent-teacher");
+
+		verify(aservice, times(1)).isStudentExists(2);
+		verify(aservice, times(1)).getStudent(2);
+		verify(eservice, times(1)).getMarks(2);
+
+	}
+
+	@Test
+	public void viewStudentIdNotExistsTest() {
+
+		when(req.getSession(false)).thenReturn(ses);
+		when(req.getSession(false).getAttribute("employee")).thenReturn(new Employee());
+		
+		when(aservice.isStudentExists(2)).thenReturn(false);
+
+		assertEquals(controller.viewStudentDetails(req,2, model), "getStudent-teacher");
+		verify(aservice, times(1)).isStudentExists(2);
+	}
+
+	@Test
+	public void viewStudentFalseTest() {
+
+		when(req.getSession(false)).thenReturn(ses);
+		when(req.getSession(false).getAttribute("employee")).thenReturn(null);
+
+		assertEquals(controller.viewStudentDetails(req, 2,model), "login-page");
+
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Test
 	public void viewStudentMarksTest() {
 
@@ -272,7 +326,7 @@ public class EmployeeControllerTest {
 		when(aservice.getStudent(2)).thenReturn(new Student());
 		when(eservice.getMarks(2)).thenReturn(null);
 
-		assertEquals(controller.getStudentMarks(req, model), "teacher-page");
+		assertEquals(controller.getStudentMarks(req, model), "studentMarks-teacher");
 
 		verify(aservice, times(1)).isStudentExists(2);
 		verify(aservice, times(1)).getStudent(2);
@@ -288,7 +342,7 @@ public class EmployeeControllerTest {
 		when(req.getParameter("studentId")).thenReturn("2");
 		when(aservice.isStudentExists(2)).thenReturn(false);
 
-		assertEquals(controller.getStudentMarks(req, model), "teacher-page");
+		assertEquals(controller.getStudentMarks(req, model), "studentMarks-teacher");
 
 		verify(aservice, times(1)).isStudentExists(2);
 
@@ -328,7 +382,7 @@ public class EmployeeControllerTest {
 		when(req.getParameter("country")).thenReturn("India");
 		when(req.getParameter("pincode")).thenReturn("206001");
        when(aservice.update(e1)).thenReturn(true);
-		assertEquals(controller.updateTeacherDetails(req, e1, model), "teacher-page");
+		assertEquals(controller.updatePersonalDetails(req, e1, model), "updateTeacherInformation-teacher");
 		verify(aservice, times(1)).update(e1);
 		;
 
@@ -348,7 +402,7 @@ public class EmployeeControllerTest {
 		when(req.getParameter("country")).thenReturn("India");
 		when(req.getParameter("pincode")).thenReturn("206001");
        when(aservice.update(e1)).thenReturn(false);
-		assertEquals(controller.updateTeacherDetails(req, e1, model), "teacher-page");
+		assertEquals(controller.updatePersonalDetails(req, e1, model), "updateTeacherInformation-teacher");
 		verify(aservice, times(1)).update(e1);
 		;
 
@@ -360,7 +414,7 @@ public class EmployeeControllerTest {
 		when(req.getSession(false)).thenReturn(ses);
 		when(req.getSession(false).getAttribute("employee")).thenReturn(null);
 
-		assertEquals(controller.updateTeacherDetails(req, new Employee(), model), "login-page");
+		assertEquals(controller.updatePersonalDetails(req, new Employee(), model), "login-page");
 
 	}
 
@@ -369,7 +423,7 @@ public class EmployeeControllerTest {
 		when(req.getSession(false)).thenReturn(ses);
 		when(req.getSession(false).getAttribute("employee")).thenReturn(new Employee());
 
-		assertEquals(controller.viewDetails(req, model), "viewTeacherDetails-teacher");
+		assertEquals(controller.viewPersonalDetails(req, model), "viewTeacherDetails-teacher");
 
 	}
 
@@ -378,7 +432,7 @@ public class EmployeeControllerTest {
 		when(req.getSession(false)).thenReturn(ses);
 		when(req.getSession(false).getAttribute("employee")).thenReturn(null);
 
-		assertEquals(controller.viewDetails(req, model), "login-page");
+		assertEquals(controller.viewPersonalDetails(req, model), "login-page");
 
 	}
 
@@ -423,7 +477,7 @@ public class EmployeeControllerTest {
 		
 		when(eservice.uploadMarks(m)).thenReturn(true);
 		
-		assertEquals(controller.uploadMarks(req, model, m), "teacher-page");
+		assertEquals(controller.uploadMarks(req, model, m), "uploadMarks-teacher");
 
 		verify(eservice, times(1)).getMarks(2);
 		verify(eservice, times(1)).delete(2);
@@ -444,7 +498,7 @@ public class EmployeeControllerTest {
 		
 		when(eservice.uploadMarks(m)).thenReturn(false);
 		
-		assertEquals(controller.uploadMarks(req, model, m), "teacher-page");
+		assertEquals(controller.uploadMarks(req, model, m), "uploadMarks-teacher");
 
 		verify(eservice, times(1)).getMarks(2);
 		verify(eservice, times(1)).delete(2);
@@ -463,7 +517,7 @@ public class EmployeeControllerTest {
 		when(aservice.isStudentExists(2)).thenReturn(false);
 		
 		
-		assertEquals(controller.uploadMarks(req, model, m), "teacher-page");
+		assertEquals(controller.uploadMarks(req, model, m), "uploadMarks-teacher");
 
 		
 	}
@@ -525,7 +579,7 @@ public class EmployeeControllerTest {
 		when(req.getParameter("password")).thenReturn("12345");
 		when(req.getParameter("newPassword")).thenReturn("12345");
 		when(aservice.update(e)).thenReturn(true);
-		assertEquals(controller.changePassword(req, model), "teacher-page");		
+		assertEquals(controller.changePassword(req, model), "changePassword-teacher");		
 		verify(aservice,times(1)).update(e);
 		
 	}
@@ -539,7 +593,7 @@ public class EmployeeControllerTest {
 		when(req.getParameter("password")).thenReturn("12345");
 		when(req.getParameter("newPassword")).thenReturn("12345");
 		when(aservice.update(e)).thenReturn(false);
-		assertEquals(controller.changePassword(req, model), "teacher-page");		
+		assertEquals(controller.changePassword(req, model), "changePassword-teacher");		
 		verify(aservice,times(1)).update(e);
 		
 	}

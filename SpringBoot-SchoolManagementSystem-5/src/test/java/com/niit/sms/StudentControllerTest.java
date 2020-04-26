@@ -70,7 +70,7 @@ public class StudentControllerTest {
 		when(req.getSession(false)).thenReturn(ses);
 		when(req.getSession(false).getAttribute("student")).thenReturn(s);
 
-		assertEquals(controller.viewDetails(req, model), "viewStudentDetails-student");
+		assertEquals(controller.viewPersonalDetails(req, model), "viewStudentDetails-student");
 
 	}
 
@@ -80,7 +80,7 @@ public class StudentControllerTest {
 		when(req.getSession(false)).thenReturn(ses);
 		when(req.getSession(false).getAttribute("student")).thenReturn(null);
 
-		assertEquals(controller.viewDetails(req, model), "login-page");
+		assertEquals(controller.viewPersonalDetails(req, model), "login-page");
 
 	}
 
@@ -109,7 +109,7 @@ public class StudentControllerTest {
 		when(req.getSession(false)).thenReturn(ses);
 		when(req.getSession(false).getAttribute("student")).thenReturn(s);
 		when(eservice.getMarks(s.getId().intValue())).thenReturn(null);
-		assertEquals(controller.viewMarks(req, model), "student-page");
+		assertEquals(controller.viewMarks(req, model), "viewMarks-student");
 
 		verify(eservice, times(1)).getMarks(s.getId().intValue());
 
@@ -167,7 +167,7 @@ public class StudentControllerTest {
 		when(req.getParameter("pincode")).thenReturn("206001");
 		when(aservice.update(s1)).thenReturn(true);
 
-		assertEquals(controller.updateStudentDetails(req, s1, model), "student-page");
+		assertEquals(controller.updatePersonalDetails(req, s1, model), "updateDetails-student");
 
 		verify(aservice, times(1)).update(s1);
 
@@ -197,7 +197,7 @@ public class StudentControllerTest {
 		when(req.getParameter("pincode")).thenReturn("206001");
 		when(aservice.update(s1)).thenReturn(false);
 
-		assertEquals(controller.updateStudentDetails(req, s1, model), "student-page");
+		assertEquals(controller.updatePersonalDetails(req, s1, model), "updateDetails-student");
 
 		verify(aservice, times(1)).update(s1);
 
@@ -210,7 +210,7 @@ public class StudentControllerTest {
 		when(req.getSession(false)).thenReturn(ses);
 		when(req.getSession(false).getAttribute("student")).thenReturn(null);
 
-		assertEquals(controller.updateStudentDetails(req, new Student(), model), "login-page");
+		assertEquals(controller.updatePersonalDetails(req, new Student(), model), "login-page");
 
 	}
 
@@ -254,7 +254,7 @@ public class StudentControllerTest {
 		when(req.getParameter("password")).thenReturn("12345");
 		when(req.getParameter("newPassword")).thenReturn("12345");
 		when(aservice.update(s)).thenReturn(true);
-		assertEquals(controller.changePassword(req, model), "student-page");		
+		assertEquals(controller.changePassword(req, model), "changePassword-student");		
 		verify(aservice,times(1)).update(s);
 		
 	}
@@ -269,7 +269,7 @@ public class StudentControllerTest {
 		when(req.getParameter("password")).thenReturn("12345");
 		when(req.getParameter("newPassword")).thenReturn("12345");
 		when(aservice.update(s)).thenReturn(false);
-		assertEquals(controller.changePassword(req, model), "student-page");		
+		assertEquals(controller.changePassword(req, model), "changePassword-student");		
 		verify(aservice,times(1)).update(s);
 		
 	}

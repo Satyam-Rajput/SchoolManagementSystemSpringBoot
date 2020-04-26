@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.niit.sms.model.Admin;
 import com.niit.sms.model.Employee;
 import com.niit.sms.model.EmployeeAddress;
 import com.niit.sms.model.Student;
@@ -38,6 +39,16 @@ public class AdminController {
 		return "index";
 	}
 	
+	@RequestMapping("/aboutUs")
+	public String aboutUs() {
+		return "about-us";
+	}
+	
+	@RequestMapping("/contactUs")
+	public String contactus() {
+		return "contact-us";
+	}
+	
 	
 @GetMapping("/changePasswordPage")
 
@@ -51,17 +62,22 @@ public String changePassword(HttpServletRequest req,Model model)
 {
 	if(req.getSession(false)!=null&&req.getSession(false).getAttribute("admin")!=null) {
 		
-	User u=(User)req.getSession(false).getAttribute("admin");
+	Admin u=(Admin)req.getSession(false).getAttribute("admin");
 	
 	User n=new User();
 	n.setPassword(req.getParameter("password"));
 	if(u.getPassword().equals(n.getPassword()))
 	{
 		u.setPassword(req.getParameter("newPassword"));
+	   n.setEmail(u.getEmail());
+	   n.setId(u.getId());
+	   n.setPassword(req.getParameter("newPassword"));
+	   n.setRole("A");
+	   n.setUserId(u.getId());
+	   loginService.save(n);
+	     
 	
-	
-	
-	if(loginService.save(u))
+	if(service.updateAdminInfo(u))
 	{
 	
 	model.addAttribute("usermsg", "Password changed successfully");
@@ -91,17 +107,12 @@ public String changePassword(HttpServletRequest req,Model model)
 
 @GetMapping("/adminPage")
 public String getAdminPage(HttpServletRequest req,ModelMap model){
-	 if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
+	 if(!(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null))
 	   {
-	HttpSession s=req.getSession(false);
-	s.setAttribute("studentCount",service.countStudent());
-	s.setAttribute("teacherCount",service.countEmployee());
-	   }
-	 else
-	 {
 		 model.addAttribute("error", "Please Login Again");
 		   return "login-page";
-	 }
+	   }
+	
 	
 	
 return "admin-page";	
@@ -126,7 +137,7 @@ return "admin-page";
    }
 
 	@PostMapping("/saveTeacher")
-	public String saveTeacher(HttpServletRequest req, @ModelAttribute("employee") Employee theEmployee, Model model) {
+	public String registerTeacher(HttpServletRequest req, @ModelAttribute("employee") Employee theEmployee, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {
 		
@@ -171,7 +182,7 @@ return "admin-page";
 	
 
 	@GetMapping("/getEmployees")
-	public String displayEmployees(HttpServletRequest req,ModelMap model) {
+	public String displayTeachers(HttpServletRequest req,ModelMap model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {
 		List<Employee> employees = service.listAllEmployees();
@@ -204,7 +215,7 @@ return "admin-page";
 	}
 
 	@PostMapping("/saveStudent")
-	public String saveStudent(HttpServletRequest req, @ModelAttribute("student") Student theStudent, Model model) {
+	public String registerStudent(HttpServletRequest req, @ModelAttribute("student") Student theStudent, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {
 		
@@ -263,7 +274,7 @@ return "admin-page";
 		   }
 	
 	@PostMapping("/filterStudent")
-	public String filterStudent(HttpServletRequest req,ModelMap model)
+	public String filterStudents(HttpServletRequest req,ModelMap model)
 	{
 		
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
@@ -316,7 +327,7 @@ return "admin-page";
 	
 	
 	@PostMapping("/getStudent")
-	public String getStudent(HttpServletRequest req, Model model) {
+	public String searchStudent(HttpServletRequest req, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {
 		int theId = Integer.parseInt(req.getParameter("studentId"));
@@ -338,7 +349,7 @@ return "admin-page";
 	}
 	@GetMapping("/viewStudent")
 	
-	public String viewStudent(HttpServletRequest req,@RequestParam("id") int theId, Model model) {
+	public String viewStudentDetails(HttpServletRequest req,@RequestParam("id") int theId, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {
 		
@@ -364,7 +375,7 @@ return "admin-page";
 	
 	
 	@GetMapping("/viewTeacher")
-	public String viewTeacher(HttpServletRequest req,@RequestParam("id") int theId, Model model) {
+	public String viewTeacherDetails(HttpServletRequest req,@RequestParam("id") int theId, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {
 		
@@ -399,7 +410,7 @@ return "admin-page";
 	
 	
 	@PostMapping("/getTeacher")
-	public String getTeacher(HttpServletRequest req, Model model) {
+	public String searchTeacher(HttpServletRequest req, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {
 		int theId = Integer.parseInt(req.getParameter("teacherId"));
@@ -445,7 +456,7 @@ return "admin-page";
 	
 	
 	@PostMapping("/updateTeacherDetails")
-	public String updateTeacher(HttpServletRequest req, @ModelAttribute("employee") Employee theEmployee, Model model) {
+	public String updateTeacherDetails(HttpServletRequest req, @ModelAttribute("employee") Employee theEmployee, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {
 			
@@ -489,7 +500,7 @@ return "admin-page";
 	
 
 	@GetMapping("/deleteTeacher")
-	public String deleteTeacher(HttpServletRequest req, @RequestParam("id") int theId, Model model) {
+	public String deleteTeacherRecord(HttpServletRequest req, @RequestParam("id") int theId, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {if (service.isEmployeeExists(theId)) {
 			if(service.deleteEmployee(theId))
@@ -544,7 +555,7 @@ return "admin-page";
 	
 
 	@PostMapping("/updateStudentDetails")
-	public String updateStudent(HttpServletRequest req, @ModelAttribute("student") Student theStudent, Model model) {
+	public String updateStudentDetails(HttpServletRequest req, @ModelAttribute("student") Student theStudent, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {
 		try {
@@ -587,7 +598,7 @@ return "admin-page";
 	
 
 	@GetMapping("/deleteStudent")
-	public String deleteStudent(HttpServletRequest req, @RequestParam("id") int theId, Model model) {
+	public String deleteStudentRecord(HttpServletRequest req, @RequestParam("id") int theId, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("admin")!=null)
 		   {if (service.isStudentExists(theId)) {
 			if(service.deleteStudent(theId))

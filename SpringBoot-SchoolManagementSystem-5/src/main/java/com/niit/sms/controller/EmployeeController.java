@@ -67,7 +67,7 @@ public class EmployeeController {
 	
 	
 	@PostMapping("/filterStudent")
-	public String filterStudent(HttpServletRequest req,ModelMap model)
+	public String filterStudents(HttpServletRequest req,ModelMap model)
 	{
 		
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("employee")!=null)
@@ -107,7 +107,7 @@ public class EmployeeController {
 		}}
 
 	@PostMapping("/getStudent")
-	public String getStudent(HttpServletRequest req, Model model) {
+	public String searchStudent(HttpServletRequest req, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("employee")!=null)
 		   {
 		int theId = Integer.parseInt(req.getParameter("studentId"));
@@ -135,7 +135,7 @@ public class EmployeeController {
 	
 	
 	@GetMapping("/viewStudent")
-	public String viewStudent(HttpServletRequest req,@RequestParam("id")int theId, Model model) {
+	public String viewStudentDetails(HttpServletRequest req,@RequestParam("id")int theId, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("employee")!=null)
 		   {
 	
@@ -196,12 +196,12 @@ public class EmployeeController {
 	else
 	{
 		model.addAttribute("error", "Marks Not Uploaded yet");
-		return "teacher-page";
+		return "studentMarks-teacher";
 	}
 
 		} else {
 			model.addAttribute("usermsg", "Student id not found");
-			return "teacher-page";
+			return "studentMarks-teacher";
 		}
 		return "studentMarks-teacher";
 		   }
@@ -237,7 +237,7 @@ public class EmployeeController {
 			}}
 	
 	@PostMapping("/updateInformation")
-	public String updateTeacherDetails(HttpServletRequest req, @ModelAttribute("employee") Employee theEmployee, Model model) {
+	public String updatePersonalDetails(HttpServletRequest req, @ModelAttribute("employee") Employee theEmployee, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("employee")!=null)
 		   {
 		try {
@@ -280,7 +280,7 @@ public class EmployeeController {
 	
 	
 	@GetMapping("/viewDetails")
-	public String viewDetails(HttpServletRequest req, Model model) {
+	public String viewPersonalDetails(HttpServletRequest req, Model model) {
 
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("employee")!=null)
 		   {	

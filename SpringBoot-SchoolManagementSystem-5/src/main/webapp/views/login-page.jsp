@@ -37,10 +37,18 @@ function validate()
 	}
 
 </script>
+<style>
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;            /* Footer height */
+}
+</style>
 </head>
-<body style="background-repeat: no-repeat;" background="<c:url value="/resources/static/images/college5.jpg"/>"/>
+<body style="background-repeat: no-repeat;" background="<c:url value="/resources/static/images/2.jpg"/>"/>
 <nav class="navbar navbar-expand-lg navbar-light sb-nav-fixed bg-success">
- <a class="navbar-brand text-light" style="font-size:20px " href="#">Alpha School</a>
+ <a class="navbar-brand text-light" style="font-size:20px " href="#"><img src="<c:url value="/resources/static/images/logo1.jpg"/>" alt="Logo" style="width:60px; "></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -53,10 +61,10 @@ function validate()
         
       
        <li class="nav-item">
-        <a class="nav-link text-light" href="#">About Us</a>
+        <a class="nav-link text-light" href="../admin/aboutUs">About Us</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link text-light" href="#">Contact Us</a>
+        <a class="nav-link text-light" href="..admin/contactUs">Contact Us</a>
       </li>
      
      
@@ -111,7 +119,7 @@ function validate()
 		</div>
 	</div>-->
 	
-	<div class="card bg-success" style="width: 30%;margin-left: 35% ; margin-top: 16%;border-radius: 10px">
+	<div class="card bg-success" style="width: 30%;margin-left: 35% ; margin-top: 14%;border-radius: 10px">
   <div class="card-header text-center text-light">
     LOGIN
   </div>
@@ -150,18 +158,21 @@ function validate()
 </div>
 
 </div></div>
-				
 				<div class="row"><div class="col-sm-12 text-danger text-center" style="font-size:15px;font-style: italic; "><label id="warningLabel" name="warningLabel">${error} ${usermsg}</label></div></div>
-						
 						<div class="row"><div class="col-sm-12 text-center text-dark"><input onclick="return validate()" type="submit" tabindex="3" value="Login" class="btn btn-outline-success my-2 my-sm-0  text-dark">
 						</div></div>
-						
-						
-						
-						
 					</form:form>
   </div>
+
 </div>
-	
+	 <footer class="bg-dark  footer" style="width:100%;height:8%">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center text-center justify-content-between small">
+                            <div class="text-muted " style="align: center;">Copyright &copy; Alpha School Management System 2020</div>
+                           
+                        </div>
+                    </div>
+                </footer>
 </body>
+
 </html>

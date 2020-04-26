@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.niit.sms.model.Admin;
 import com.niit.sms.model.Employee;
 import com.niit.sms.model.Student;
 import com.niit.sms.model.User;
+import com.niit.sms.repository.AdminRepository;
 import com.niit.sms.repository.EmployeeAddressRepository;
 import com.niit.sms.repository.EmployeeRepository;
 import com.niit.sms.repository.StudentAddressRepository;
@@ -29,7 +31,8 @@ public class AdminService {
 	private EmployeeAddressRepository eARepo;
 	@Autowired
 	private StudentAddressRepository sarepo;
-
+   @Autowired
+	private AdminRepository arepo;
 	public List<Employee> listAllEmployees() {
 		return erepo.findAll();
 	}
@@ -144,10 +147,27 @@ try {
 		
 	}
 	
+	public boolean updateAdminInfo(Admin admin)
+	{
+		try
+		{
+		    arepo.save(admin);	
+		    return true;
+		}catch(Exception e) { return false;}
+		
+	}
 	
 	
 	
-	
+	public Admin getAdmin(long id)
+	{
+		try {
+		return arepo.findById(id).get();
+	}catch(Exception e)
+		{
+		return null;
+		}
+		}
 	
 	
 	

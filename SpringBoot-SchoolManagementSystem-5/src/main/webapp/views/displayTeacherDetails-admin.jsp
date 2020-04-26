@@ -14,9 +14,10 @@
         <link href="../resources/static/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-    </head>       <body class="sb-nav-fixed bg-white">
+    </head>      
+     <body class="sb-nav-fixed bg-white" background="<c:url value="/resources/static/images/admin.jpg"/>"/>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
-            <a class="navbar-brand" href="../admin/adminPage">Admin Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+            <a class="navbar-brand" href="../admin/adminPage"><img src="<c:url value="/resources/static/images/logo1.jpg"/>" alt="Logo" style="width:60px; "></a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -56,7 +57,7 @@
                                 Register Teachers</a
                             ><a class="nav-link text-light" href="../admin/getEmployees"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                                Display Teacher Details</a>
+                                Display Teachers List</a>
                                 <a class="nav-link text-light" href="../admin/findTeacher"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 Find Teacher Details</a>
@@ -68,7 +69,7 @@
                                 Register Students</a
                             ><a class="nav-link text-light" href="../admin/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                                Display Student Details</a>
+                                Display Students List</a>
                                 <a class="nav-link text-light" href="../admin/findStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 Find Student Details</a>
@@ -87,18 +88,19 @@
 
  <div class="card" style="width: 90%;margin-left: 5%;">
   <div class="card-header text-light text-center bg-success font-weight-bolder">
-   Teacher Details 
+   Teachers List
     <br/>
    
-   <div class="row"><div class="col-sm-12 text-right"><div style="color: red;font-size: 15px;margin-right: 15%  "><label id="warningLabel" name="warningLabel">${error}</label></div></div>
-
+   
 </div>
+ <div class="row"><div class="col-sm-12 text-center"><div style="color: red;font-size: 15px;margin-right: 15%  "><label id="warningLabel" name="warningLabel">${error}</label></div></div>
+    
+    
    
   </div>
   <div class="card-body" >
   
-    
-    
+   
     
     <br/>
     
@@ -149,7 +151,7 @@
 								
 									<!-- display the update link --> <a  class="btn btn-success badge-pill" style="width:80px" href="${viewLink}">Details</a>&nbsp;&nbsp; <a  class="btn btn-primary badge-pill" style="width:80px" href="${updateLink}">Update</a>
 									&nbsp;&nbsp; <a  class="btn btn-danger badge-pill" style="width:80px" href="${deleteLink}"
-									onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
+									onclick="if (!(confirm('Are you sure you want to delete this Record?'))) return false">Delete</a>
 								</td>
 
 							</tr>

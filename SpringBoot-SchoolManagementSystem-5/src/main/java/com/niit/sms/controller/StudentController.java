@@ -44,7 +44,7 @@ public class StudentController {
 	}
 	
 	@GetMapping("/viewDetails")
-	public String viewDetails(HttpServletRequest req, Model model) {
+	public String viewPersonalDetails(HttpServletRequest req, Model model) {
 
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("student")!=null)
 		   {	
@@ -75,7 +75,7 @@ public class StudentController {
 		if(marks==null)
 		{
 			model.addAttribute("error", "Marks Not Uploaded yet");
-			return "student-page";
+			
 		}
 		return "viewMarks-student";
 		   }
@@ -113,7 +113,7 @@ public class StudentController {
 	
 
 	@PostMapping("/updateStudentDetails")
-	public String updateStudentDetails(HttpServletRequest req, @ModelAttribute("student") Student theStudent, Model model) {
+	public String updatePersonalDetails(HttpServletRequest req, @ModelAttribute("student") Student theStudent, Model model) {
 		if(req.getSession(false)!=null && req.getSession(false).getAttribute("student")!=null)
 		   {
 		

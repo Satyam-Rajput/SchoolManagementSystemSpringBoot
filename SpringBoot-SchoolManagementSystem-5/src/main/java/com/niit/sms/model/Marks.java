@@ -20,12 +20,26 @@ public class Marks {
 	private double marksInEnglish;
 	@Column(name="marks_in_hindi")
 	private double marksInHindi;
+	public double getAttendence() {
+		return attendence;
+	}
+
+
+	public void setAttendence(double attendence) {
+		this.attendence = attendence;
+	}
+
+
+
+
 	@Column(name="marks_in_science")
 	private double marksInScience;
 	@Column(name="marks_in_math")
 	private double marksInMath;
 	@Column(name="marks_in_social_science")
 	private double marksInSocialScience;
+	@Column(name="attendence")
+	private double attendence;
 	@Transient
 	private double percentage;
 	

@@ -36,9 +36,9 @@
      }
 	</script>
     </head>
-        <body class="sb-nav-fixed bg-white">
+        <body class="sb-nav-fixed bg-white" background="<c:url value="/resources/static/images/admin.jpg"/>"/>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
-            <a class="navbar-brand" href="../admin/adminPage">Admin Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+            <a class="navbar-brand" href="../admin/adminPage"><img src="<c:url value="/resources/static/images/logo1.jpg"/>" alt="Logo" style="width:60px; "></a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -78,7 +78,7 @@
                                 Register Teachers</a
                             ><a class="nav-link text-light" href="../admin/getEmployees"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                                Display Teacher Details</a>
+                                Display Teachers List</a>
                                 <a class="nav-link text-light" href="../admin/findTeacher"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 Find Teacher Details</a>
@@ -90,7 +90,7 @@
                                 Register Students</a
                             ><a class="nav-link text-light" href="../admin/getStudents"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                                Display Student Details</a>
+                                Display Students List</a>
                                 <a class="nav-link text-light" href="../admin/findStudent"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 Find Student Details</a>

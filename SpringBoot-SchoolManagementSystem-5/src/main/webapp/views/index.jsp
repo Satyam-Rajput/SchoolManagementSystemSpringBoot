@@ -13,12 +13,20 @@
  rel="stylesheet">
 <script src="<c:url value="/resources/static/js/jquery-3.3.0.min.js" />"></script>
 <script src="<c:url value="/resources/static/js/bootstrap.min.js" />"></script>
+<style>
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;            /* Footer height */
+}
+</style>
 
 </head>
-<body >
+<body background="<c:url value="/resources/static/images/2.jpg"/>"/>
 
 <nav class="navbar navbar-expand-lg navbar-light sb-nav-fixed bg-success">
- <a class="navbar-brand text-light" style="font-size:20px " href="#">Alpha School</a>
+ <a class="navbar-brand text-light" style="font-size:20px " href="#"><img src="<c:url value="/resources/static/images/logo1.jpg"/>" alt="Logo" style="width:60px; "></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -31,10 +39,10 @@
         
       
        <li class="nav-item">
-        <a class="nav-link text-light" href="#">About Us</a>
+        <a class="nav-link text-light" href="../admin/aboutUs">About Us</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link text-light" href="#">Contact Us</a>
+        <a class="nav-link text-light" href="../admin/contactUs">Contact Us</a>
       </li>
      
      
@@ -48,35 +56,13 @@
       </form>
   </div>
 </nav>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="/resources/static/images/college8.jpg" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="/resources/static/images/school4.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="/resources/static/images/school5.jpg" alt="Third slide">
-    </div>
-    
-    <div class="carousel-item">
-      <img class="d-block w-100" src="/resources/static/images/school6.jpg" alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
 </body>
+ <footer class="bg-dark  footer" style="width:100%;height:8%">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center text-center justify-content-between small">
+                            <div class="text-muted " style="align: center;">Copyright &copy; Alpha School Management System 2020</div>
+                           
+                        </div>
+                    </div>
+                </footer>
 </html>

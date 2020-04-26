@@ -38,10 +38,9 @@
 	</script>
    
     </head>
-      
-            <body class="sb-nav-fixed bg-light">
+          <body class="sb-nav-fixed bg-light" background="<c:url value="/resources/static/images/student.jpg"/>"/>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
-            <a class="navbar-brand text-light" href="../student/StudentPage">Student Dashboard</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+            <a class="navbar-brand text-light" href="../student/StudentPage"><img src="<c:url value="/resources/static/images/logo1.jpg"/>" alt="Logo" style="width:60px; "></a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -77,7 +76,7 @@
                             
                               <a class="nav-link text-light" href="../student/updateDetails"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>
-                                Update Details</a
+                                Update Personal Details</a
                             ><a class="nav-link text-light" href="../student/viewDetails"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                View Details</a>

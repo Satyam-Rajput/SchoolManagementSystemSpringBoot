@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.sms.model.Admin;
 import com.niit.sms.model.Employee;
 import com.niit.sms.model.Student;
 import com.niit.sms.model.User;
 import com.niit.sms.service.AdminService;
 import com.niit.sms.service.LoginService;
+import java.util.*;
 
 @Controller
 
@@ -53,10 +55,11 @@ public class LoginController {
 			
 		} else {
 			if (usr.getRole().equalsIgnoreCase("A")) {
+			   Admin admin=adminService.getAdmin(usr.getId());
 				HttpSession session=req.getSession();
 				session.setMaxInactiveInterval(300);
-				session.setAttribute("admin", usr);
-				session.setAttribute("user", usr.getEmail().split("@")[0]);
+				session.setAttribute("admin", admin);
+				session.setAttribute("user", admin.getFirstName());
 				return "redirect:../admin/adminPage";
 	
 
@@ -66,7 +69,7 @@ public class LoginController {
 				HttpSession session=req.getSession();
 				session.setMaxInactiveInterval(300);
 				session.setAttribute("employee", theEmployee);
-				session.setAttribute("user", usr.getEmail().split("@")[0]);
+				session.setAttribute("user", theEmployee.getFirstName());
 				return "redirect:../employee/teacherPage";
 				
 
@@ -75,7 +78,7 @@ public class LoginController {
 				
 				HttpSession session=req.getSession();
 				session.setMaxInactiveInterval(300);
-				session.setAttribute("user", usr.getEmail().split("@")[0]);
+				session.setAttribute("user",theStudent.getFirstName());
 				session.setAttribute("student", theStudent);
 				
 				return "redirect:../student/studentPage";
@@ -106,4 +109,6 @@ public class LoginController {
 		return "login-page";
 	}
 
+	
+	
 }

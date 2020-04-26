@@ -28,11 +28,12 @@ import com.niit.sms.service.AdminService;
 import com.niit.sms.service.LoginService;
 
 @RestController  
-@CrossOrigin(origins="http://localhost:4200")  
+@CrossOrigin(origins="*")  
 @RequestMapping(value="/api/admin") 
 public class AdminRestController {
 
 	@Autowired
+	
 	private AdminService service;
 	@Autowired
 	private LoginService loginService;
@@ -252,12 +253,26 @@ public class AdminRestController {
 		return s;
 		
 	}
-	
-	@PostMapping("/changePassword")
-public boolean changePassword(@Valid @RequestBody User user)
+
+	@PostMapping("/changePassword/{password}")
+public boolean changePassword(@PathVariable(value = "password") String password,@Valid @RequestBody User user)
 {
-	return loginService.save(user);
+		
+		User u=loginService.get(user.getEmail());
+		User n=new User();
+		n.setPassword(password);
+		if(u.getPassword().equals(n.getPassword()))
+		{	user.setId(u.getId());
+			user.setUserId(u.getUserId());
+			user.setRole(u.getRole());
+		return loginService.save(user);
+		}
+		else
+			return false;
+		
 }
+	
+
 
 
 @PostMapping("/saveTeacher")
@@ -268,6 +283,7 @@ if(!loginService.isUser(theEmployee.getEmail()))
 	Employee e=convertEmployeeToSave(theEmployee);
 	return service.save(e);
 	}
+
 return false;
 }
 

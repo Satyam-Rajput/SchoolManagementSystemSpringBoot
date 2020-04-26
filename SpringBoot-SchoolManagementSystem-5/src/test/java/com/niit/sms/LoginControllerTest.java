@@ -24,6 +24,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.niit.sms.controller.LoginController;
+import com.niit.sms.model.Admin;
 import com.niit.sms.model.Employee;
 import com.niit.sms.model.Student;
 import com.niit.sms.model.User;
@@ -78,14 +79,16 @@ public class LoginControllerTest {
 		user.setEmail("satyam@gmail.com");
 		user.setPassword("12345");
 		User theUser = new User();
-	
+	  Admin admin=new Admin();
+	  admin.setFirstName("Satyam");
 		theUser.setRole("A");
 		theUser.setEmail("satyam@gmail.com");
+		theUser.setId(1);
 		when(lservice.isUser("satyam@gmail.com")).thenReturn(true);
 
 		when(req.getSession()).thenReturn(ses);
 		when(lservice.checkUser(user)).thenReturn(theUser);
-
+        when(adminService.getAdmin(1)).thenReturn(admin);
 		assertEquals(loginController.processLogin(req, user, modelMap), "redirect:../admin/adminPage");
 
 		verify(lservice, times(1)).isUser("satyam@gmail.com");
