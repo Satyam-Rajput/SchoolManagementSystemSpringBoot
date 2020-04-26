@@ -1,0 +1,119 @@
+Execute the following SQL queries after running the server
+
+
+
+
+USE school5;
+drop table employee_address;
+drop table employee;
+
+drop table student_address;
+drop table student;
+drop table user;
+
+
+CREATE TABLE `employee` (
+	`id` BIGINT NOT NULL AUTO_INCREMENT,
+	`date_of_birth` DATE NULL DEFAULT NULL,
+	`date_of_joining` DATE NULL DEFAULT NULL,
+	`email_id` VARCHAR(255) NULL DEFAULT NULL,
+	`first_name` VARCHAR(255) NULL DEFAULT NULL,
+	`last_name` VARCHAR(255) NULL DEFAULT NULL,
+	`password` VARCHAR(255) NULL DEFAULT NULL,
+	`phone_number` BIGINT NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
+CREATE TABLE `employee_address` (
+	`id` BIGINT NOT NULL AUTO_INCREMENT,
+	`city` VARCHAR(255) NULL DEFAULT NULL,
+	`country` VARCHAR(255) NULL DEFAULT NULL,
+	`house_number` INT NULL DEFAULT NULL,
+	`pincode` INT NULL DEFAULT NULL,
+	`state` VARCHAR(255) NULL DEFAULT NULL,
+	`street_name` VARCHAR(255) NULL DEFAULT NULL,
+	`employee_id` BIGINT NULL DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	INDEX `FK_employee_address_employee` (`employee_id`),
+	CONSTRAINT `FK_employee_address_employee` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`) ON UPDATE CASCADE ON DELETE CASCADE
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
+
+
+CREATE TABLE `student` (
+	`id` BIGINT NOT NULL AUTO_INCREMENT,
+	`date_of_birth` DATE NULL DEFAULT NULL,
+	`date_of_joining` DATE NULL DEFAULT NULL,
+	`email_id` VARCHAR(255) NULL DEFAULT NULL,
+	`father_name` VARCHAR(255) NULL DEFAULT NULL,
+	`first_name` VARCHAR(255) NULL DEFAULT NULL,
+	`last_name` VARCHAR(255) NULL DEFAULT NULL,
+	`password` VARCHAR(255) NULL DEFAULT NULL,
+	`phone_number` BIGINT NULL DEFAULT NULL,
+	`student_class` VARCHAR(255) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
+CREATE TABLE `student_address` (
+	`id` BIGINT NOT NULL AUTO_INCREMENT,
+	`city` VARCHAR(255) NULL DEFAULT NULL,
+	`country` VARCHAR(255) NULL DEFAULT NULL,
+	`house_number` INT NULL DEFAULT NULL,
+	`pincode` INT NULL DEFAULT NULL,
+	`state` VARCHAR(255) NULL DEFAULT NULL,
+	`street_name` VARCHAR(255) NULL DEFAULT NULL,
+	`student_id` BIGINT NULL DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	INDEX `FK10mpuj1mmky2gmxxtxt0sbqdr` (`student_id`),
+	CONSTRAINT `FK10mpuj1mmky2gmxxtxt0sbqdr` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON UPDATE CASCADE ON DELETE CASCADE
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
+
+
+CREATE TABLE `user` (
+	`id` BIGINT NOT NULL AUTO_INCREMENT,
+	`email_id` VARCHAR(255) NOT NULL,
+	`password` VARCHAR(255) NOT NULL,
+	`role` VARCHAR(255) NOT NULL,
+	`user_id` BIGINT NOT NULL,
+	PRIMARY KEY (`id`),
+	UNIQUE INDEX `id` (`id`),
+	UNIQUE INDEX `email_id` (`email_id`)
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
+delimiter $
+CREATE DEFINER=`root`@`localhost` TRIGGER `employee_after_insert` AFTER INSERT ON `employee` FOR EACH ROW BEGIN
+insert into user(email_id,password,role,user_id) values(new.email_id,new.password,'T',new.id);
+END;$
+CREATE DEFINER=`root`@`localhost` TRIGGER `employee_before_insert` BEFORE INSERT ON `employee` FOR EACH ROW BEGIN
+delete from employee_address where employee_id=new.id;
+END;$
+CREATE DEFINER=`root`@`localhost` TRIGGER `employee_before_update` BEFORE UPDATE ON `employee` FOR EACH ROW BEGIN
+update user set email_id=new.email_id,password=new.password where user_id=new.id and role='T';
+END;$
+CREATE DEFINER=`root`@`localhost` TRIGGER `student_after_insert` AFTER INSERT ON `student` FOR EACH ROW BEGIN
+insert into user(email_id,password,role,user_id) values(new.email_id,new.password,'S',new.id);
+END;$
+CREATE DEFINER=`root`@`localhost` TRIGGER `student_before_insert` BEFORE INSERT ON `student` FOR EACH ROW BEGIN
+delete from student_address where student_id=new.id;
+END;$
+CREATE DEFINER=`root`@`localhost` TRIGGER `student_before_update` BEFORE UPDATE ON `student` FOR EACH ROW BEGIN
+update user set email_id=new.email_id,password=new.password where user_id=new.id and role='S';
+END;$
+delimiter ;
+
